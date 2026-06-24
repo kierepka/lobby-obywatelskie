@@ -12,7 +12,7 @@ const posts = (await getCollection('aktualnosci', ({ data }) => !data.draft))
     <p class="eyebrow">Aktualności</p>
     <h1>Co się dzieje.</h1>
   </header>
-  <section class="container">
+  <section class="container news-list">
     <div class="news-grid">
       {posts.map((p) => (
         <NewsCard title={p.data.title} date={p.data.date} description={p.data.description} href={url(`/aktualnosci/${p.slug}`)} />
@@ -22,6 +22,7 @@ const posts = (await getCollection('aktualnosci', ({ data }) => !data.draft))
   <style>
     .page-hero { padding: clamp(2.5rem, 6vw, 4rem) 1.5rem; border-bottom: 1px solid var(--line); margin-bottom: 0; }
     .page-hero h1 { font-size: var(--step-3); margin: 0; }
+    .news-list { padding-top: clamp(2rem, 5vw, 3.5rem); }
     .news-grid { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); }
   </style>
 </BaseLayout>
