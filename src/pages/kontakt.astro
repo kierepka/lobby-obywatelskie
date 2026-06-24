@@ -14,7 +14,10 @@ const emaile = [
     <p class="eyebrow">Kontakt</p>
     <h1>Dołącz do nas.</h1>
     <p class="lede">Spotykamy się w każdą środę o 21:00. Napisz — odpowiadamy.</p>
-    <a class="btn" href="mailto:kontakt@lobbyobywatelskie.pl?subject=Chc%C4%99%20do%C5%82%C4%85czy%C4%87">Chcę dołączyć</a>
+    <div class="hero-actions">
+      <a class="btn" href="https://rozmowy.wikikracja.pl/otwarte" target="_blank" rel="noopener noreferrer">Dołącz do spotkania</a>
+      <a class="btn btn--ghost" href="mailto:kontakt@lobbyobywatelskie.pl?subject=Chc%C4%99%20do%C5%82%C4%85czy%C4%87">Napisz do nas</a>
+    </div>
   </header>
 
   <section class="container">
@@ -33,6 +36,7 @@ const emaile = [
     .page-hero { padding: clamp(2.5rem, 6vw, 4rem) 1.5rem; border-bottom: 1px solid var(--line); margin-bottom: 0; }
     .page-hero h1 { font-size: var(--step-3); margin: 0 0 1rem; }
     .page-hero .lede { font-size: var(--step-1); max-width: 34rem; color: #34373d; margin: 0 0 1.75rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: .85rem; }
 
     .emaile { list-style: none; padding: 0; margin: 0; }
     .emaile li {

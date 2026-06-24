@@ -246,9 +246,12 @@ const historyRecords = [
     <div>
       <p class="eyebrow">Spotkajmy się</p>
       <h2>Masz pomysł? Zacznijmy od rozmowy.</h2>
-      <p>Spotykamy się online w każdą środę o 21:00.</p>
+      <p>Spotykamy się online w każdą środę o 21:00. Wejście otwarte dla każdego.</p>
     </div>
-    <a class="btn" href={url('/kontakt')}>Napisz do nas</a>
+    <div class="join-actions">
+      <a class="btn" href="https://rozmowy.wikikracja.pl/otwarte" target="_blank" rel="noopener noreferrer">Dołącz do spotkania</a>
+      <a class="btn btn--ghost" href={url('/kontakt')}>Napisz do nas</a>
+    </div>
   </section>
 
   <style>
@@ -536,6 +539,7 @@ const historyRecords = [
       border-bottom: 1px solid var(--line);
     }
     .join h2 { max-width: 16ch; font-size: var(--step-2); }
+    .join-actions { display: flex; flex-wrap: wrap; gap: .85rem; flex: 0 0 auto; }
     .join p:last-child { margin: .75rem 0 0; color: var(--muted); }
 
     @media (max-width: 760px) {

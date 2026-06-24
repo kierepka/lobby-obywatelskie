@@ -35,7 +35,11 @@ const legal = [
           <li><a href={s.href} target="_blank" rel="noopener noreferrer">{s.label} ↗</a></li>
         ))}
       </ul>
-      <p class="meet"><b>Spotkania online</b><span>Środy, godz. 21:00</span></p>
+      <p class="meet">
+        <b>Spotkania online</b>
+        <span>Środy, godz. 21:00</span>
+        <a href="https://rozmowy.wikikracja.pl/otwarte" target="_blank" rel="noopener noreferrer">Dołącz do spotkania ↗</a>
+      </p>
     </nav>
   </div>
   <div class="container footer-bottom">
@@ -70,8 +74,10 @@ const legal = [
   .footer-nav ul { list-style: none; padding: 0; margin: 0; line-height: 2.1; }
   .site-footer a { color: #e6edf4; text-decoration: none; }
   .footer-nav a:hover { color: #fff; text-decoration: underline; text-decoration-color: var(--red); }
-  .meet { display: grid; gap: .2rem; margin-top: 1.6rem; font-size: .85rem; }
+  .meet { display: grid; gap: .25rem; margin-top: 1.6rem; font-size: .85rem; }
   .meet span { color: #8fa1b4; }
+  .meet a { margin-top: .35rem; color: #fff; font: 700 .82rem var(--f-display); text-decoration: none; text-decoration-color: var(--red); }
+  .meet a:hover { text-decoration: underline; text-decoration-color: var(--red); }
   .footer-bottom {
     display: flex;
     justify-content: space-between;
