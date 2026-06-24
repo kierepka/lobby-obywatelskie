@@ -115,10 +115,17 @@ const steps = [
       margin: 0;
     }
     .section-heading > p { max-width: 31rem; margin: 0; color: var(--muted); }
-    .how { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; align-items: stretch; }
+    .how {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-auto-rows: 1fr;
+      gap: 1.1rem;
+      align-items: stretch;
+    }
     .how-item {
       display: flex;
       flex-direction: column;
+      height: 100%;
       padding: 1.6rem;
       border: 1px solid var(--line);
       border-radius: .9rem;

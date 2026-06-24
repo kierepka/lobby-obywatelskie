@@ -15,7 +15,10 @@ const isActive = (href: string) =>
   <div class="container header-inner">
     <a href={url('/')} class="logo" aria-label="Lobby Obywatelskie — strona główna">
       <img class="logo-mark" src={asset('/img/logo-mark.png')} alt="" width="486" height="330" />
-      <span class="logo-text">Lobby<br />Obywatelskie</span>
+      <span class="logo-text">
+        <span class="logo-name">Lobby</span>
+        <span class="logo-sub">Obywatelskie</span>
+      </span>
     </a>
     <button class="nav-toggle" aria-label="Otwórz menu" aria-expanded="false" aria-controls="main-nav">
       <span></span><span></span><span></span>
@@ -47,16 +50,25 @@ const isActive = (href: string) =>
     justify-content: space-between;
     gap: 2rem;
   }
-  .logo { display: inline-flex; align-items: center; gap: 0.65rem; flex: 0 0 auto; }
+  .logo { display: inline-flex; align-items: center; gap: 0.6rem; flex: 0 0 auto; text-decoration: none; }
   .logo-mark { height: 2.4rem; width: auto; display: block; }
-  .logo-text {
+  .logo-text { display: flex; flex-direction: column; line-height: 1; text-decoration: none; }
+  .logo-name {
     font-family: var(--f-display);
     font-weight: 800;
-    font-size: 1.02rem;
-    line-height: 0.98;
-    letter-spacing: -0.02em;
-    color: var(--ink);
+    font-size: 1.15rem;
+    letter-spacing: 0.02em;
     text-transform: uppercase;
+    color: var(--ink);
+  }
+  .logo-sub {
+    font-family: var(--f-display);
+    font-weight: 600;
+    font-size: 0.7rem;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 0.12rem;
   }
   .nav, .nav-links { display: flex; align-items: center; }
   .nav { gap: clamp(1.5rem, 3vw, 2.5rem); }
