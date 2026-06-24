@@ -1,5 +1,5 @@
 ---
-import { url } from '../lib/site';
+import { url, asset } from '../lib/site';
 ---
 <section class="hero">
   <div class="container hero-grid">
@@ -23,104 +23,36 @@ import { url } from '../lib/site';
       </div>
     </div>
 
-    <div
-      class="product-preview"
-      role="img"
-      aria-label="Przykładowy panel inicjatywy obywatelskiej pokazujący postęp konsultacji, liczbę uczestników i ostatnią aktywność."
-    >
-      <span class="grid-glow" aria-hidden="true"></span>
-      <svg class="network" viewBox="0 0 520 430" aria-hidden="true">
-        <path d="M48 94 176 42l126 74 130-47 50 135-87 124-150 50-137-62L48 94Z" />
-        <path d="m176 42 69 336M48 94l347 234M302 116 108 316M432 69 245 378M482 204 48 94" />
-        <circle cx="48" cy="94" r="5" /><circle cx="176" cy="42" r="5" />
-        <circle cx="302" cy="116" r="5" /><circle cx="432" cy="69" r="5" />
-        <circle cx="482" cy="204" r="5" /><circle cx="395" cy="328" r="5" />
-        <circle cx="245" cy="378" r="5" /><circle cx="108" cy="316" r="5" />
-      </svg>
-
-      <div class="dashboard">
-        <div class="dashboard-bar">
-          <div class="window-dots"><span></span><span></span><span></span></div>
-          <span class="secure"><i>✓</i> Panel obywatelski</span>
-          <span class="status"><i></i> Konsultacje trwają</span>
-        </div>
-
-        <div class="dashboard-body">
-          <article class="proposal">
-            <div class="proposal-meta">
-              <span>Inicjatywa #LO-024</span>
-              <span>Etap 2 z 3</span>
-            </div>
-            <p class="proposal-label">Obywatelska inicjatywa</p>
-            <h2>Decydujmy wspólnie o tym, co wspólne.</h2>
-            <p class="proposal-copy">
-              Otwarta dyskusja trwa do środy. Każdy uczestnik ma jeden,
-              równie ważny głos.
-            </p>
-
-            <div class="progress-head">
-              <span>Postęp konsultacji</span>
-              <strong>78%</strong>
-            </div>
-            <div class="progress"><span></span></div>
-
-            <div class="proposal-footer">
-              <div class="participants">
-                <span>AK</span><span>MK</span><span>JP</span><span>+41</span>
-              </div>
-              <span class="verified">✓ Zweryfikowani uczestnicy</span>
-            </div>
-          </article>
-
-          <aside class="metrics">
-            <p class="panel-title">Stan inicjatywy</p>
-            <div class="metric">
-              <span class="metric-icon people-icon">•••</span>
-              <div><strong>44</strong><small>uczestników</small></div>
-              <b>+12%</b>
-            </div>
-            <div class="metric">
-              <span class="metric-icon vote-icon">✓</span>
-              <div><strong>31</strong><small>oddanych głosów</small></div>
-              <b>70%</b>
-            </div>
-            <div class="deadline">
-              <span>Do końca dyskusji</span>
-              <strong>2 dni 14 godz.</strong>
-            </div>
-          </aside>
-        </div>
-
-        <div class="activity">
-          <span class="activity-icon">↗</span>
-          <p><b>Nowa aktywność</b><small>3 osoby dołączyły do dyskusji w ciągu ostatniej godziny</small></p>
-          <span class="activity-time">teraz</span>
-        </div>
-      </div>
-    </div>
+    <figure class="hero-figure">
+      <img
+        src={asset('/img/hero.png')}
+        width="1135"
+        height="944"
+        alt="Obywatele z biało-czerwonymi flagami na tle panoramy Warszawy z Pałacem Kultury, trzymający transparenty: „Decydujmy wspólnie o tym, co wspólne”, „Bez partyjnych podziałów”, „Oddajemy decyzję w ręce obywateli”, „Równy głos dla każdego”, „Twój głos ma znaczenie”."
+        loading="eager"
+        fetchpriority="high"
+      />
+    </figure>
   </div>
 </section>
 <style>
   .hero {
-    overflow: hidden;
     margin: 0;
-    padding: clamp(3.5rem, 7vw, 6.5rem) 0 clamp(4rem, 8vw, 7rem);
+    padding: clamp(2.25rem, 5vw, 4rem) 0 clamp(2.5rem, 6vw, 4.5rem);
     border-bottom: 1px solid var(--line);
-    background:
-      radial-gradient(circle at 88% 45%, rgba(21, 59, 104, .09), transparent 28rem),
-      linear-gradient(180deg, rgba(255, 255, 255, .82), rgba(234, 240, 245, .25));
+    background: linear-gradient(180deg, rgba(255, 255, 255, .75), rgba(234, 240, 245, .2));
   }
   .hero-grid {
     display: grid;
-    grid-template-columns: minmax(0, .95fr) minmax(31rem, 1.05fr);
-    gap: clamp(2rem, 5vw, 4.5rem);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    gap: clamp(1.5rem, 4vw, 3.5rem);
     align-items: center;
   }
   h1 {
-    max-width: 10ch;
+    max-width: 11ch;
     font-size: var(--step-4);
     line-height: .94;
-    margin: 0 0 1.4rem;
+    margin: 0 0 1.25rem;
   }
   .hl { color: var(--red); }
   .lede { font-size: var(--step-1); max-width: 34rem; margin: 0 0 2rem; color: #455465; }
@@ -138,131 +70,18 @@ import { url } from '../lib/site';
   .hero-proof b { color: var(--blue); font-size: 1.05rem; }
   .hero-proof i { width: 4px; height: 4px; border-radius: 50%; background: var(--red); }
 
-  .product-preview {
-    position: relative;
-    min-height: 34rem;
-    display: grid;
-    place-items: center;
-    isolation: isolate;
-  }
-  .grid-glow {
-    position: absolute;
-    inset: -3rem -5rem;
-    z-index: -3;
-    background-image:
-      linear-gradient(rgba(21,59,104,.055) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(21,59,104,.055) 1px, transparent 1px);
-    background-size: 30px 30px;
-    mask-image: radial-gradient(circle, #000 10%, transparent 68%);
-  }
-  .network {
-    position: absolute;
-    inset: 0;
-    z-index: -2;
+  .hero-figure { margin: 0; }
+  .hero-figure img {
     width: 100%;
-    height: 100%;
-    overflow: visible;
-  }
-  .network path { fill: none; stroke: rgba(21,59,104,.13); stroke-width: 1; }
-  .network circle { fill: #fff; stroke: var(--blue); stroke-width: 2; }
-  .network circle:nth-of-type(3n) { fill: var(--red); stroke: var(--red); }
-
-  .dashboard {
-    width: min(100%, 39rem);
-    border: 1px solid #b9c7d3;
+    height: auto;
+    display: block;
     border-radius: 1rem;
-    background: rgba(255,255,255,.96);
-    box-shadow: 0 30px 80px rgba(13,33,59,.18);
-    overflow: hidden;
-    transform: perspective(1000px) rotateY(-2deg) rotateX(1deg);
+    mix-blend-mode: multiply;
   }
-  .dashboard-bar {
-    min-height: 3rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: .7rem 1rem;
-    border-bottom: 1px solid var(--line);
-    background: #f8fafc;
-    font: 700 .62rem var(--f-display);
-    letter-spacing: .055em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-  .window-dots { display: flex; gap: .28rem; }
-  .window-dots span { width: .45rem; height: .45rem; border-radius: 50%; background: #c5d0da; }
-  .window-dots span:first-child { background: var(--red); }
-  .secure { display: flex; align-items: center; gap: .35rem; }
-  .secure i { color: #167252; font-style: normal; }
-  .status { display: flex; align-items: center; gap: .4rem; margin-left: auto; color: var(--blue); }
-  .status i { width: .5rem; height: .5rem; border-radius: 50%; background: #18a06c; box-shadow: 0 0 0 4px rgba(24,160,108,.1); }
-  .dashboard-body { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(10rem, .8fr); }
-  .proposal { padding: 1.7rem; border-right: 1px solid var(--line); }
-  .proposal-meta { display: flex; justify-content: space-between; gap: 1rem; color: var(--muted); font: 700 .6rem var(--f-display); text-transform: uppercase; letter-spacing: .07em; }
-  .proposal-label { margin: 2.2rem 0 .45rem; color: var(--red); font: 700 .66rem var(--f-display); text-transform: uppercase; letter-spacing: .1em; }
-  .proposal h2 { max-width: 15ch; margin: 0; font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.08; }
-  .proposal-copy { max-width: 30rem; margin: .8rem 0 1.8rem; color: var(--muted); font-size: .85rem; line-height: 1.55; }
-  .progress-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: .5rem; font: 700 .65rem var(--f-display); color: var(--muted); }
-  .progress-head strong { color: var(--blue); font-size: .8rem; }
-  .progress { height: .48rem; overflow: hidden; border-radius: 1rem; background: var(--paper-2); }
-  .progress span { display: block; width: 78%; height: 100%; border-radius: inherit; background: var(--red); }
-  .proposal-footer { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 1rem; }
-  .participants { display: flex; }
-  .participants span {
-    display: grid;
-    place-items: center;
-    width: 1.8rem;
-    height: 1.8rem;
-    margin-left: -.4rem;
-    border: 2px solid #fff;
-    border-radius: 50%;
-    background: var(--blue);
-    color: #fff;
-    font: 700 .48rem var(--f-display);
-  }
-  .participants span:first-child { margin-left: 0; background: var(--red); }
-  .participants span:nth-child(3) { background: #6d8299; }
-  .participants span:last-child { background: var(--blue-light); color: var(--blue); }
-  .verified { color: #167252; font: 700 .57rem var(--f-display); }
-  .metrics { padding: 1.3rem 1rem; background: #fbfcfd; }
-  .panel-title { margin: 0 0 1rem; font: 700 .62rem var(--f-display); color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
-  .metric { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: .6rem; padding: .8rem 0; border-bottom: 1px solid var(--line); }
-  .metric-icon { display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: .5rem; background: var(--blue-light); color: var(--blue); font: 700 .65rem var(--f-display); }
-  .vote-icon { background: #fbe7eb; color: var(--red); }
-  .metric div { display: grid; line-height: 1.05; }
-  .metric strong { font: 700 1rem var(--f-display); }
-  .metric small { margin-top: .25rem; color: var(--muted); font-size: .55rem; }
-  .metric > b { color: #167252; font: 700 .58rem var(--f-display); }
-  .deadline { display: grid; gap: .3rem; margin-top: 1rem; padding: .8rem; border-radius: .55rem; background: var(--blue); color: #fff; }
-  .deadline span { color: #b9c8d8; font: 400 .57rem var(--f-body); }
-  .deadline strong { font: 700 .72rem var(--f-display); }
-  .activity { display: flex; align-items: center; gap: .7rem; padding: .8rem 1rem; border-top: 1px solid var(--line); background: #fff; }
-  .activity-icon { display: grid; place-items: center; width: 1.8rem; height: 1.8rem; border-radius: 50%; background: #e7f4ee; color: #167252; font-weight: 700; }
-  .activity p { display: grid; margin: 0; line-height: 1.25; font: 700 .62rem var(--f-display); }
-  .activity small { margin-top: .18rem; color: var(--muted); font: 400 .58rem var(--f-body); }
-  .activity-time { margin-left: auto; color: var(--muted); font: 700 .55rem var(--f-display); text-transform: uppercase; }
 
-  @media (max-width: 980px) {
-    .hero-grid { grid-template-columns: 1fr; }
-    .hero-copy { max-width: 43rem; }
-    .product-preview { width: min(100%, 42rem); margin-inline: auto; }
-  }
-  @media (max-width: 767px) {
-    .hero { padding-top: 3rem; }
-    .product-preview { min-height: auto; margin-top: .5rem; }
-    .network, .grid-glow, .metrics, .activity { display: none; }
-    .dashboard { transform: none; border-radius: .8rem; box-shadow: 0 18px 45px rgba(13,33,59,.14); }
-    .dashboard-body { display: block; }
-    .proposal { border-right: 0; padding: 1.35rem; }
-    .proposal-label { margin-top: 1.6rem; }
-    .proposal h2 { font-size: 1.55rem; }
-    .dashboard-bar { gap: .55rem; }
-    .secure { display: none; }
-    .verified { display: none; }
-  }
-  @media (max-width: 500px) {
-    .hero-actions { display: grid; }
-    .hero-proof { justify-content: space-between; gap: .45rem; font-size: .65rem; }
-    .proposal-meta span:last-child { display: none; }
+  @media (max-width: 860px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .hero-figure { order: -1; max-width: 34rem; margin-inline: auto; }
+    h1 { max-width: none; }
   }
 </style>
