@@ -2,111 +2,170 @@
 import { url } from '../lib/site';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const dna = [
-  'Pełna autonomia',
-  'Synergia społeczności',
-  'Niezależna przedsiębiorczość',
-  'Rozwój technologii',
-  'Równość oparta o demokrację bezpośrednią',
-  'Dobrowolność i odpowiedzialność',
+const pillars = [
+  {
+    number: '01',
+    title: 'Wspólnie decydujemy',
+    text: 'Każdy członek ma jeden, równie ważny głos. Najważniejsze decyzje podejmujemy po otwartej dyskusji.',
+  },
+  {
+    number: '02',
+    title: 'Wspólnie tworzymy',
+    text: 'Łączymy pomysły, umiejętności i pracę, aby uruchamiać społeczne oraz gospodarcze inicjatywy.',
+  },
+  {
+    number: '03',
+    title: 'Wspólnie korzystamy',
+    text: 'Wartość wypracowana przez grupę ma wzmacniać jej członków, niezależność wspólnoty i kolejne projekty.',
+  },
+  {
+    number: '04',
+    title: 'Wspólnie odpowiadamy',
+    text: 'Wolność łączymy z odpowiedzialnością. Decyzja daje wpływ, ale oznacza również udział w jej skutkach.',
+  },
 ];
-const wierzymy = [
-  { t: 'Wolność i zaufanie', o: 'jako podstawa relacji.' },
-  { t: 'Równość i koleżeństwo', o: 'bo każdy głos jest tak samo ważny.' },
-  { t: 'Transparentność', o: 'w każdym działaniu.' },
-  { t: 'Honor i odwaga', o: 'by podejmować wyzwania i stać na straży wartości.' },
-];
-const strategia = [
-  { krok: '01', tytul: 'Inicjatywa', opis: 'Każdy pomysł jest mile widziany, bo to on nas napędza.' },
-  { krok: '02', tytul: 'Demokracja bezpośrednia', opis: 'Wspólnie podejmujemy decyzje i wspólnie za nie odpowiadamy.' },
-  { krok: '03', tytul: 'Wzajemne wsparcie', opis: 'Tworzymy społeczność, w której się wspieramy.' },
+
+const rules = [
+  ['Równość', 'Status, majątek i rozpoznawalność nie dają dodatkowego głosu.'],
+  ['Transparentność', 'Zasady, decyzje i sposób wykorzystania wspólnych zasobów muszą być zrozumiałe.'],
+  ['Dobrowolność', 'Nikt nie jest zmuszany do udziału w projekcie, pracy ani finansowaniu inicjatywy.'],
+  ['Autonomia', 'Działamy oddolnie i pozostajemy niezależni od partii oraz zewnętrznych ośrodków władzy.'],
+  ['Przedsiębiorczość', 'Nie ograniczamy się do postulatów. Tworzymy rozwiązania, usługi i przedsięwzięcia.'],
+  ['Wzajemne wsparcie', 'Wiedza, kontakty i doświadczenie członków mają służyć rozwojowi całej wspólnoty.'],
 ];
 ---
 <BaseLayout
   title="Manifest — Lobby Obywatelskie"
-  description="Manifest Lobby Obywatelskie — neutralny politycznie, oddolny ruch społeczny na rzecz dobra wspólnego."
+  description="Manifest Lobby Obywatelskie — wspólne decyzje, inicjatywy i odpowiedzialność."
 >
-  <header class="page-hero container">
-    <p class="eyebrow">Manifest</p>
-    <h1>Razem decydujeMy,<br />razem tworzyMy.</h1>
-    <p class="lede">
-      Ruch społeczny działający na rzecz dobra wspólnego. Mamy dość pustych słów
-      i czekania, aż ktoś za nas zmieni świat. Bierzemy sprawy w swoje ręce — bo
-      zmiana zaczyna się od nas. To nie deklaracja. To zobowiązanie.
-    </p>
+  <header class="manifest-hero">
+    <div class="container manifest-hero-grid">
+      <div>
+        <p class="eyebrow">Manifest Lobby Obywatelskiego</p>
+        <h1>Decydujemy.<br />Tworzymy.<br /><span>Odpowiadamy.</span></h1>
+      </div>
+      <div class="manifest-intro">
+        <p>
+          Nie jesteśmy kolejną grupą czekającą na decyzje polityków.
+          Budujemy wspólnotę, która sama rozstrzyga swoje sprawy i przekłada
+          pomysły na konkretne działanie.
+        </p>
+        <strong>Jedna osoba. Jeden głos. Wspólna praca.</strong>
+      </div>
+    </div>
   </header>
 
-  <section class="container">
-    <p class="eyebrow">Kim jesteśmy — nasze DNA</p>
-    <p class="intro">Jesteśmy neutralni politycznie i działamy oddolnie. Nie interesują nas
-    partyjne spory, lecz skuteczność w działaniu. Naszą siłą jest:</p>
-    <ul class="tick-list grid-2">
-      {dna.map((d) => <li><span class="tick">✕</span> {d}</li>)}
-    </ul>
+  <section class="container pillars-section">
+    <div class="section-title">
+      <p class="eyebrow">Cztery filary</p>
+      <h2>Na czym opieramy wspólnotę.</h2>
+    </div>
+    <div class="pillars">
+      {pillars.map((pillar) => (
+        <article>
+          <span>{pillar.number}</span>
+          <h3>{pillar.title}</h3>
+          <p>{pillar.text}</p>
+        </article>
+      ))}
+    </div>
   </section>
 
-  <section class="container">
-    <p class="eyebrow">Wierzymy w</p>
-    <dl class="beliefs">
-      {wierzymy.map((w) => (
+  <section class="economy-manifest">
+    <div class="container economy-manifest-grid">
+      <div>
+        <p class="eyebrow">Od idei do niezależności</p>
+        <h2>Demokracja ma również wymiar gospodarczy.</h2>
+      </div>
+      <div>
+        <p>
+          Chcemy tworzyć wspólne inicjatywy gospodarcze budujące kapitał,
+          kompetencje i dobrobyt członków. Ich podstawą nie jest obietnica
+          łatwego zysku, lecz własna praca, odważne pomysły i uczciwie
+          uzgodnione zasady współpracy.
+        </p>
+        <p>
+          Wspólnota ma pomagać uruchamiać projekty, których pojedyncza osoba
+          nie byłaby w stanie zrealizować sama.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container rules-section">
+    <div class="section-title">
+      <p class="eyebrow">Zasady działania</p>
+      <h2>Prosto i bez drobnego druku.</h2>
+    </div>
+    <dl class="rules">
+      {rules.map(([title, text], index) => (
         <div>
-          <dt>{w.t}</dt>
-          <dd>{w.o}</dd>
+          <span>{String(index + 1).padStart(2, '0')}</span>
+          <dt>{title}</dt>
+          <dd>{text}</dd>
         </div>
       ))}
     </dl>
   </section>
 
-  <section class="container">
-    <p class="eyebrow">Jak działamy — nasza strategia</p>
-    <ol class="proc">
-      {strategia.map((p) => (
-        <li>
-          <span class="proc-num">{p.krok}</span>
-          <div>
-            <h3>{p.tytul}</h3>
-            <p>{p.opis}</p>
-          </div>
-        </li>
-      ))}
-    </ol>
-  </section>
-
-  <section class="container goal">
-    <p class="eyebrow">Dokąd zmierzamy</p>
-    <h2>Tworzymy zaangażowaną wspólnotę mającą wpływ na rozwój gospodarczy.</h2>
-    <p class="intro">Wnieś swoje pasje, pomysły i energię. Zamiast szukać tego, co nas
-    dzieli, znajdź to, co nas łączy. Razem dokonamy zmian.</p>
+  <section class="container manifest-cta">
+    <div>
+      <p class="eyebrow">Twój następny krok</p>
+      <h2>Wnieś pomysł, umiejętność albo gotowość do działania.</h2>
+      <p>Nie musisz mieć stanowiska ani zaplecza. Zacznij od rozmowy z ludźmi, którzy również chcą tworzyć.</p>
+    </div>
     <a class="btn" href={url('/kontakt')}>Dołącz do nas</a>
   </section>
 
   <style>
-    .page-hero { padding: clamp(2.5rem, 6vw, 4rem) 1.5rem; border-bottom: 1px solid var(--line); }
-    .page-hero h1 { font-size: var(--step-3); margin: 0 0 1rem; }
-    .page-hero .lede, .intro { max-width: 42rem; color: #34373d; }
-    .page-hero .lede { font-size: var(--step-1); margin: 0; }
-    .intro { margin: 0 0 1.5rem; }
-
-    .tick-list { list-style: none; padding: 0; margin: 0; }
-    .tick-list li { display: flex; gap: 0.9rem; align-items: flex-start; padding: 0.7rem 0; border-bottom: 1px dashed var(--line); }
-    .tick-list .tick { font-size: 0.8em; margin-top: 0.15em; }
-    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; column-gap: 2.5rem; }
-
-    .beliefs { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 0; }
-    .beliefs dt { font-family: var(--f-display); font-weight: 800; font-size: var(--step-1); color: var(--ink); }
-    .beliefs dd { margin: 0.25rem 0 0; color: #34373d; }
-
-    .proc { list-style: none; padding: 0; margin: 0; }
-    .proc li { display: flex; gap: 1.25rem; align-items: baseline; padding: 1.25rem 0; border-top: 1px solid var(--ink); }
-    .proc-num { font-family: var(--f-mono); font-weight: 500; color: var(--red); font-size: var(--step-1); flex: 0 0 auto; }
-    .proc h3 { font-size: var(--step-1); margin: 0 0 0.25rem; }
-    .proc p { margin: 0; color: #34373d; }
-
-    .goal h2 { font-size: var(--step-2); max-width: 38rem; margin: 0 0 1rem; }
-
-    @media (max-width: 640px) {
-      .grid-2, .beliefs { grid-template-columns: 1fr; }
-      .beliefs { gap: 1.25rem; }
+    .manifest-hero {
+      margin: 0;
+      padding: clamp(4rem, 9vw, 7rem) 0;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(135deg, #fff, var(--paper-2));
+    }
+    .manifest-hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: clamp(3rem, 8vw, 7rem);
+      align-items: end;
+    }
+    .manifest-hero h1 { margin: 0; font-size: var(--step-4); line-height: .94; }
+    .manifest-hero h1 span { color: var(--red); }
+    .manifest-intro { padding-left: 2rem; border-left: 3px solid var(--red); }
+    .manifest-intro p { margin: 0 0 1.25rem; color: #465667; font-size: var(--step-1); }
+    .manifest-intro strong { font: 700 .75rem var(--f-display); letter-spacing: .08em; text-transform: uppercase; color: var(--blue); }
+    .section-title { display: grid; grid-template-columns: .7fr 1.3fr; gap: 2rem; align-items: end; margin-bottom: 2.5rem; }
+    .section-title h2 { max-width: 15ch; margin: 0; font-size: var(--step-3); }
+    .pillars { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 2px solid var(--ink); }
+    .pillars article { min-height: 15rem; padding: 1.5rem; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .pillars article:nth-child(2n) { border-right: 0; }
+    .pillars span { color: var(--red); font: 700 .7rem var(--f-display); letter-spacing: .08em; }
+    .pillars h3 { margin: 3rem 0 .7rem; font-size: var(--step-2); }
+    .pillars p { max-width: 31rem; margin: 0; color: var(--muted); }
+    .economy-manifest { padding: clamp(4rem, 8vw, 7rem) 0; background: var(--blue); color: #fff; }
+    .economy-manifest-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(3rem, 8vw, 7rem); }
+    .economy-manifest .eyebrow, .economy-manifest h2 { color: #fff; }
+    .economy-manifest h2 { max-width: 13ch; margin: 0; font-size: var(--step-3); }
+    .economy-manifest-grid > div:last-child { padding-left: 2rem; border-left: 1px solid #597491; }
+    .economy-manifest-grid > div:last-child p { margin: 0 0 1rem; color: #d7e1ea; font-size: 1.05rem; }
+    .rules { margin: 0; border-top: 2px solid var(--ink); }
+    .rules > div { display: grid; grid-template-columns: 3rem 12rem 1fr; gap: 1rem; padding: 1.2rem 0; border-bottom: 1px solid var(--line); }
+    .rules span { color: var(--red); font: 700 .68rem var(--f-display); }
+    .rules dt { font: 700 1rem var(--f-display); }
+    .rules dd { margin: 0; color: var(--muted); }
+    .manifest-cta { display: flex; align-items: center; justify-content: space-between; gap: 3rem; padding-top: 3rem; padding-bottom: 3rem; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .manifest-cta h2 { max-width: 18ch; margin: 0; font-size: var(--step-2); }
+    .manifest-cta p:last-child { max-width: 39rem; margin: .8rem 0 0; color: var(--muted); }
+    @media (max-width: 760px) {
+      .manifest-hero-grid, .section-title, .economy-manifest-grid { grid-template-columns: 1fr; }
+      .manifest-intro, .economy-manifest-grid > div:last-child { padding-left: 1.2rem; }
+      .pillars { grid-template-columns: 1fr; }
+      .pillars article { min-height: 0; border-right: 0; }
+      .pillars h3 { margin-top: 2rem; }
+      .rules > div { grid-template-columns: 2.5rem 1fr; }
+      .rules dd { grid-column: 2; }
+      .manifest-cta { align-items: flex-start; flex-direction: column; }
     }
   </style>
 </BaseLayout>
