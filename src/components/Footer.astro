@@ -1,4 +1,5 @@
 ---
+import { url, asset } from '../lib/site';
 const year = new Date().getFullYear();
 const social = [
   { href: 'https://www.youtube.com/@LobbyObywatelskie', label: 'YouTube' },
@@ -15,7 +16,7 @@ const legal = [
 <footer class="site-footer">
   <div class="container footer-grid">
     <div class="footer-brand-col">
-      <img class="footer-logo" src="/img/logo.png" alt="Lobby Obywatelskie" width="1189" height="343" />
+      <img class="footer-logo" src={asset('/img/logo.png')} alt="Lobby Obywatelskie" width="1189" height="343" />
       <p class="footer-tag">Oddolny ruch dla ludzi, którzy chcą mieć realny wpływ na wspólne decyzje.</p>
       <a class="footer-mail" href="mailto:kontakt@lobbyobywatelskie.pl">kontakt@lobbyobywatelskie.pl</a>
     </div>
@@ -23,7 +24,7 @@ const legal = [
     <nav class="footer-nav" aria-label="Stopka">
       <p class="footer-h">Strona</p>
       <ul>
-        {legal.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+        {legal.map((l) => <li><a href={url(l.href)}>{l.label}</a></li>)}
       </ul>
     </nav>
 

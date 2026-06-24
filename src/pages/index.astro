@@ -1,4 +1,5 @@
 ---
+import { url } from '../lib/site';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import NewsCard from '../components/NewsCard.astro';
@@ -72,7 +73,7 @@ const steps = [
           Łączą nas wolność, odpowiedzialność i przekonanie, że sprawy wspólne
           powinny być rozstrzygane wspólnie.
         </p>
-        <a class="text-link" href="/manifest">Przeczytaj manifest <span>→</span></a>
+        <a class="text-link" href={url('/manifest')}>Przeczytaj manifest <span>→</span></a>
       </div>
     </div>
   </section>
@@ -83,11 +84,11 @@ const steps = [
         <p class="eyebrow">Aktualności</p>
         <h2>Jesteśmy w ruchu.</h2>
       </div>
-      <a class="news-all" href="/aktualnosci">Wszystkie aktualności <span>→</span></a>
+      <a class="news-all" href={url('/aktualnosci')}>Wszystkie aktualności <span>→</span></a>
     </div>
     <div class="news-grid">
       {posts.map((p) => (
-        <NewsCard title={p.data.title} date={p.data.date} description={p.data.description} href={`/aktualnosci/${p.slug}`} />
+        <NewsCard title={p.data.title} date={p.data.date} description={p.data.description} href={url(`/aktualnosci/${p.slug}`)} />
       ))}
     </div>
   </section>
@@ -98,7 +99,7 @@ const steps = [
       <h2>Masz pomysł? Zacznijmy od rozmowy.</h2>
       <p>Spotykamy się online w każdą środę o 21:00.</p>
     </div>
-    <a class="btn" href="/kontakt">Napisz do nas</a>
+    <a class="btn" href={url('/kontakt')}>Napisz do nas</a>
   </section>
 
   <style>
@@ -114,9 +115,10 @@ const steps = [
       margin: 0;
     }
     .section-heading > p { max-width: 31rem; margin: 0; color: var(--muted); }
-    .how { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
+    .how { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; align-items: stretch; }
     .how-item {
-      min-height: 19rem;
+      display: flex;
+      flex-direction: column;
       padding: 1.6rem;
       border: 1px solid var(--line);
       border-radius: .9rem;
@@ -200,7 +202,6 @@ const steps = [
       .section-heading, .manifest-grid { grid-template-columns: 1fr; }
       .section-heading { gap: 1.25rem; }
       .how { grid-template-columns: 1fr; }
-      .how-item { min-height: 0; }
       .how-item h3 { margin-top: 2rem; }
       .manifest-mark { min-height: 14rem; max-width: 24rem; width: 100%; justify-self: center; }
       .news-head, .join { align-items: flex-start; flex-direction: column; }

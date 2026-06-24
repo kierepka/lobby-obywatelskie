@@ -1,18 +1,20 @@
 ---
+import { url, asset } from '../lib/site';
 const links = [
   { href: '/', label: 'Start' },
   { href: '/manifest', label: 'Manifest' },
   { href: '/aktualnosci', label: 'Aktualności' },
   { href: '/kontakt', label: 'Kontakt' },
 ];
-const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const path = Astro.url.pathname.replace(/\/$/, '').replace(base, '') || '/';
 const isActive = (href: string) =>
   href === '/' ? path === '/' : path === href || path.startsWith(href + '/');
 ---
 <header class="site-header">
   <div class="container header-inner">
-    <a href="/" class="logo" aria-label="Lobby Obywatelskie — strona główna">
-      <img class="logo-mark" src="/img/logo-mark.png" alt="" width="486" height="330" />
+    <a href={url('/')} class="logo" aria-label="Lobby Obywatelskie — strona główna">
+      <img class="logo-mark" src={asset('/img/logo-mark.png')} alt="" width="486" height="330" />
       <span class="logo-text">Lobby<br />Obywatelskie</span>
     </a>
     <button class="nav-toggle" aria-label="Otwórz menu" aria-expanded="false" aria-controls="main-nav">
@@ -21,10 +23,10 @@ const isActive = (href: string) =>
     <nav id="main-nav" class="nav" aria-label="Główna nawigacja">
       <div class="nav-links">
         {links.map((l) => (
-          <a href={l.href} aria-current={isActive(l.href) ? 'page' : undefined}>{l.label}</a>
+          <a href={url(l.href)} aria-current={isActive(l.href) ? 'page' : undefined}>{l.label}</a>
         ))}
       </div>
-      <a class="header-cta" href="/kontakt">Dołącz do nas <span aria-hidden="true">→</span></a>
+      <a class="header-cta" href={url('/kontakt')}>Dołącz do nas <span aria-hidden="true">→</span></a>
     </nav>
   </div>
 </header>

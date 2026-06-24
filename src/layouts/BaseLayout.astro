@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { asset } from '../lib/site';
 import '../styles/fonts.css';
 import '../styles/global.css';
 interface Props { title: string; description?: string; }
@@ -14,7 +15,7 @@ const { title, description = 'Lobby Obywatelskie — ruch demokracji bezpośredn
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="theme-color" content="#ffffff" />
-    <link rel="icon" href="/img/logo.png" />
+    <link rel="icon" href={asset('/img/logo-mark.png')} />
   </head>
   <body>
     <a class="skip-link" href="#main">Przejdź do treści</a>
