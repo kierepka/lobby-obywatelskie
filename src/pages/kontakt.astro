@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const emaile = [
+  { adres: 'kontakt@lobbyobywatelskie.pl', opis: 'Kontakt ogólny (główny kanał)' },
+  { adres: 'wspolpraca@lobbyobywatelskie.pl', opis: 'Współpraca' },
+  { adres: 'media@lobbyobywatelskie.pl', opis: 'Media' },
+  { adres: 'zgloszenia@lobbyobywatelskie.pl', opis: 'Zgłoszenia' },
+  { adres: 'administracja@lobbyobywatelskie.pl', opis: 'Administracja' },
+  { adres: 'pytania@lobbyobywatelskie.pl', opis: 'Pytania' },
+];
+---
+<BaseLayout title="Kontakt — Lobby Obywatelskie">
+  <h1>Kontakt</h1>
+  <p>Spotykamy się w każdą środę o godzinie 21:00. Napisz do nas:</p>
+  <ul class="emaile">
+    {emaile.map((e) => (
+      <li><a href={`mailto:${e.adres}`}>{e.adres}</a> — {e.opis}</li>
+    ))}
+  </ul>
+  <p><a class="btn" href="mailto:kontakt@lobbyobywatelskie.pl?subject=Chc%C4%99%20do%C5%82%C4%85czy%C4%87">Chcę dołączyć</a></p>
+  <style>
+    .emaile { list-style: none; padding: 0; }
+    .emaile li { padding: 0.4rem 0; }
+  </style>
+</BaseLayout>

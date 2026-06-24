@@ -1,0 +1,17 @@
+---
+interface Props { title: string; date: Date; description: string; href: string; }
+const { title, date, description, href } = Astro.props;
+const formatted = date.toLocaleDateString('pl-PL', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+<article class="news-card">
+  <time datetime={date.toISOString()}>{formatted}</time>
+  <h3><a href={href}>{title}</a></h3>
+  <p>{description}</p>
+</article>
+<style>
+  .news-card { border: 1px solid #e2e6ec; border-radius: 10px; padding: 1.25rem; }
+  .news-card time { color: var(--muted); font-size: 0.9rem; }
+  .news-card h3 { margin: 0.25rem 0 0.5rem; }
+  .news-card a { text-decoration: none; color: var(--navy); }
+  .news-card a:hover { text-decoration: underline; }
+</style>

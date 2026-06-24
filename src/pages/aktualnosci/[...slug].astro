@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('aktualnosci', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+const { post } = Astro.props;
+const { Content } = await post.render();
+const formatted = post.data.date.toLocaleDateString('pl-PL', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+<BaseLayout title={`${post.data.title} — Lobby Obywatelskie`} description={post.data.description}>
+  <article>
+    <time datetime={post.data.date.toISOString()}>{formatted}</time>
+    <h1>{post.data.title}</h1>
+    <Content />
+    <p><a href="/aktualnosci">← Wszystkie aktualności</a></p>
+  </article>
+</BaseLayout>

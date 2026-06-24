@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import NewsCard from '../../components/NewsCard.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('aktualnosci', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+<BaseLayout title="Aktualności — Lobby Obywatelskie">
+  <h1>Aktualności</h1>
+  <div class="news-grid">
+    {posts.map((p) => (
+      <NewsCard title={p.data.title} date={p.data.date} description={p.data.description} href={`/aktualnosci/${p.slug}`} />
+    ))}
+  </div>
+  <style>
+    .news-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); margin-top: 1.5rem; }
+  </style>
+</BaseLayout>

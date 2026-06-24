@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import NewsCard from '../components/NewsCard.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('aktualnosci', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+---
+<BaseLayout title="Lobby Obywatelskie — Razem możemy więcej">
+  <Hero />
+  <section>
+    <h2>O nas</h2>
+    <p>Lobby Obywatelskie to ruch demokracji bezpośredniej. Gdy politycy,
+    korporacje i media nie działają w interesie ludzi — ostatni głos należy
+    do obywateli. Jedna osoba, jeden równy głos.</p>
+  </section>
+  <section>
+    <h2>Najnowsze aktualności</h2>
+    <div class="news-grid">
+      {posts.map((p) => (
+        <NewsCard title={p.data.title} date={p.data.date} description={p.data.description} href={`/aktualnosci/${p.slug}`} />
+      ))}
+    </div>
+    <p><a href="/aktualnosci">Zobacz wszystkie aktualności →</a></p>
+  </section>
+  <style>
+    .news-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); }
+    section { margin: 2.5rem 0; }
+  </style>
+</BaseLayout>

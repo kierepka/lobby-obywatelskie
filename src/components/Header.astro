@@ -1,0 +1,40 @@
+---
+const links = [
+  { href: '/', label: 'Strona główna' },
+  { href: '/manifest', label: 'Manifest' },
+  { href: '/aktualnosci', label: 'Aktualności' },
+  { href: '/kontakt', label: 'Kontakt' },
+];
+---
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">Lobby&nbsp;Obywatelskie</a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <nav class="nav">
+      {links.map((l) => <a href={l.href}>{l.label}</a>)}
+    </nav>
+  </div>
+</header>
+<style>
+  .site-header { background: var(--navy); }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.25rem; }
+  .logo { color: #fff; font-weight: 700; text-decoration: none; font-size: 1.15rem; }
+  .nav { display: flex; gap: 1.25rem; }
+  .nav a { color: #fff; text-decoration: none; }
+  .nav a:hover { text-decoration: underline; }
+  .nav-toggle { display: none; background: none; border: 0; color: #fff; font-size: 1.5rem; cursor: pointer; }
+  @media (max-width: 640px) {
+    .nav-toggle { display: block; }
+    .nav { display: none; flex-direction: column; width: 100%; padding-top: 0.75rem; }
+    .nav.open { display: flex; }
+    .header-inner { flex-wrap: wrap; }
+  }
+</style>
+<script>
+  const btn = document.querySelector('.nav-toggle');
+  const nav = document.querySelector('.nav');
+  btn?.addEventListener('click', () => {
+    const open = nav?.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(!!open));
+  });
+</script>
