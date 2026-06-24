@@ -1,32 +1,78 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const zasady = [
+  'Wszystkie reguły ustalane są w demokratycznym głosowaniu.',
+  'Jedna osoba — jeden równy głos.',
+  'Decyzje zapadają zwykłą większością.',
+];
+const czlonkostwo = [
+  'Nowy członek dołącza z rekomendacją 4 obecnych członków.',
+  'Roczna składka wynosi 12 zł i jest ustalana wspólnie.',
+];
+const procedura = [
+  { krok: '01', tytul: 'Inicjatywa', opis: 'Trzy podpisy rozpoczynają proces.' },
+  { krok: '02', tytul: 'Zbiórka podpisów', opis: '90 dni na zebranie poparcia.' },
+  { krok: '03', tytul: 'Dyskusja', opis: '7 dni otwartej debaty.' },
+  { krok: '04', tytul: 'Referendum', opis: '3 dni tajnego głosowania z weryfikacją.' },
+];
 ---
 <BaseLayout title="Manifest — Lobby Obywatelskie">
-  <h1>Manifest</h1>
-  <p>To obywatele mają ostatni głos. Działamy razem, bo razem możemy więcej.</p>
+  <header class="page-hero container">
+    <p class="eyebrow">Manifest</p>
+    <h1>To obywatele mają<br />ostatni głos.</h1>
+    <p class="lede">Działamy razem, bo razem możemy więcej. Oto zasady, na których stoimy.</p>
+  </header>
 
-  <h2>Zasady działania</h2>
-  <ul>
-    <li>Wszystkie reguły ustalane są w demokratycznym głosowaniu.</li>
-    <li>Jedna osoba — jeden równy głos.</li>
-    <li>Decyzje zapadają zwykłą większością.</li>
-  </ul>
+  <section class="container two-col">
+    <div>
+      <h2>Zasady działania</h2>
+      <ul class="tick-list">
+        {zasady.map((z) => <li><span class="tick">✕</span> {z}</li>)}
+      </ul>
+    </div>
+    <div>
+      <h2>Członkostwo</h2>
+      <ul class="tick-list">
+        {czlonkostwo.map((c) => <li><span class="tick">✕</span> {c}</li>)}
+      </ul>
+    </div>
+  </section>
 
-  <h2>Członkostwo</h2>
-  <ul>
-    <li>Nowy członek dołącza z rekomendacją 4 obecnych członków.</li>
-    <li>Roczna składka wynosi 12 zł i jest ustalana wspólnie.</li>
-  </ul>
+  <section class="container">
+    <p class="eyebrow">Procedura głosowań</p>
+    <ol class="proc">
+      {procedura.map((p) => (
+        <li>
+          <span class="proc-num">{p.krok}</span>
+          <div>
+            <h3>{p.tytul}</h3>
+            <p>{p.opis}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+    <p class="note">Pełny tekst Manifestu uzupełnimy treścią z obecnej strony.</p>
+  </section>
 
-  <h2>Procedura głosowań</h2>
-  <ul>
-    <li>3 podpisy inicjują proces.</li>
-    <li>90 dni na zebranie podpisów.</li>
-    <li>7 dni dyskusji.</li>
-    <li>3 dni referendum.</li>
-    <li>Głosowanie tajne z możliwością weryfikacji.</li>
-  </ul>
+  <style>
+    .page-hero { padding: clamp(2.5rem, 6vw, 4rem) 1.5rem; border-bottom: 1px solid var(--line); margin-bottom: 0; }
+    .page-hero h1 { font-size: var(--step-3); margin: 0 0 1rem; }
+    .page-hero .lede { font-size: var(--step-1); max-width: 36rem; color: #34373d; margin: 0; }
 
-  <p class="note">Treść do uzupełnienia pełnym tekstem Manifestu z obecnej strony.</p>
-  <style>.note { color: var(--muted); font-style: italic; }</style>
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    .two-col h2 { font-size: var(--step-2); margin: 0 0 1rem; }
+    .tick-list { list-style: none; padding: 0; margin: 0; }
+    .tick-list li { display: flex; gap: 0.9rem; align-items: flex-start; padding: 0.7rem 0; border-bottom: 1px dashed var(--line); }
+    .tick-list .tick { font-size: 0.8em; margin-top: 0.15em; }
+
+    .proc { list-style: none; padding: 0; margin: 1.5rem 0 0; counter-reset: none; }
+    .proc li { display: flex; gap: 1.25rem; align-items: baseline; padding: 1.25rem 0; border-top: 1px solid var(--ink); }
+    .proc-num { font-family: var(--f-mono); font-weight: 500; color: var(--red); font-size: var(--step-1); flex: 0 0 auto; }
+    .proc h3 { font-size: var(--step-1); margin: 0 0 0.25rem; }
+    .proc p { margin: 0; color: #34373d; }
+    .note { color: var(--muted); font-style: italic; margin-top: 2rem; }
+
+    @media (max-width: 700px) { .two-col { grid-template-columns: 1fr; gap: 1.5rem; } }
+  </style>
 </BaseLayout>

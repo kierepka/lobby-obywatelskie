@@ -1,6 +1,6 @@
 ---
 const links = [
-  { href: '/', label: 'Strona główna' },
+  { href: '/', label: 'Start' },
   { href: '/manifest', label: 'Manifest' },
   { href: '/aktualnosci', label: 'Aktualności' },
   { href: '/kontakt', label: 'Kontakt' },
@@ -8,24 +8,89 @@ const links = [
 ---
 <header class="site-header">
   <div class="container header-inner">
-    <a href="/" class="logo">Lobby&nbsp;Obywatelskie</a>
-    <button class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>
-    <nav class="nav">
+    <a href="/" class="logo">
+      <span class="logo-mark" aria-hidden="true">✕</span>
+      <span class="logo-text">Lobby&nbsp;Obywatelskie</span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false">Menu</button>
+    <nav class="nav" aria-label="Główna">
       {links.map((l) => <a href={l.href}>{l.label}</a>)}
     </nav>
   </div>
 </header>
 <style>
-  .site-header { background: var(--navy); }
-  .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.25rem; }
-  .logo { color: #fff; font-weight: 700; text-decoration: none; font-size: 1.15rem; }
-  .nav { display: flex; gap: 1.25rem; }
-  .nav a { color: #fff; text-decoration: none; }
-  .nav a:hover { text-decoration: underline; }
-  .nav-toggle { display: none; background: none; border: 0; color: #fff; font-size: 1.5rem; cursor: pointer; }
+  .site-header {
+    border-bottom: 1px solid var(--line);
+    background: var(--paper);
+    position: sticky;
+    top: 0;
+    z-index: 20;
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+  }
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .logo-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.7rem;
+    height: 1.7rem;
+    border: 2px solid var(--ink);
+    border-radius: 2px;
+    color: var(--red);
+    font-weight: 800;
+    font-size: 0.95rem;
+  }
+  .logo-text {
+    font-family: var(--f-display);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    font-size: 1.1rem;
+  }
+  .nav { display: flex; gap: 1.75rem; }
+  .nav a {
+    font-family: var(--f-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 0.2rem 0;
+    border-bottom: 2px solid transparent;
+  }
+  .nav a:hover { border-color: var(--red); }
+  .nav-toggle {
+    display: none;
+    font-family: var(--f-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    background: none;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    color: var(--ink);
+    padding: 0.4rem 0.7rem;
+    cursor: pointer;
+  }
   @media (max-width: 640px) {
     .nav-toggle { display: block; }
-    .nav { display: none; flex-direction: column; width: 100%; padding-top: 0.75rem; }
+    .nav {
+      display: none;
+      flex-direction: column;
+      gap: 1rem;
+      width: 100%;
+      padding-top: 1rem;
+    }
     .nav.open { display: flex; }
     .header-inner { flex-wrap: wrap; }
   }

@@ -12,12 +12,24 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await post.render();
 const formatted = post.data.date.toLocaleDateString('pl-PL', { year: 'numeric', month: 'long', day: 'numeric' });
+const iso = post.data.date.toISOString().slice(0, 10);
 ---
 <BaseLayout title={`${post.data.title} — Lobby Obywatelskie`} description={post.data.description}>
-  <article>
-    <time datetime={post.data.date.toISOString()}>{formatted}</time>
+  <article class="post container">
+    <p class="eyebrow">Aktualności</p>
+    <time datetime={iso} class="post-date">{formatted}</time>
     <h1>{post.data.title}</h1>
-    <Content />
-    <p><a href="/aktualnosci">← Wszystkie aktualności</a></p>
+    <div class="post-body">
+      <Content />
+    </div>
+    <p class="back"><a href="/aktualnosci">← Wszystkie aktualności</a></p>
   </article>
+  <style>
+    .post { max-width: 44rem; padding-top: clamp(2.5rem, 6vw, 4rem); }
+    .post-date { font-family: var(--f-mono); font-size: var(--step--1); letter-spacing: 0.1em; color: var(--muted); }
+    .post h1 { font-size: var(--step-3); margin: 0.5rem 0 1.5rem; }
+    .post-body { font-size: var(--step-1); }
+    .post-body :global(p) { margin: 0 0 1.2rem; }
+    .back { margin-top: 2.5rem; font-family: var(--f-mono); font-size: var(--step--1); }
+  </style>
 </BaseLayout>

@@ -2,16 +2,43 @@
 interface Props { title: string; date: Date; description: string; href: string; }
 const { title, date, description, href } = Astro.props;
 const formatted = date.toLocaleDateString('pl-PL', { year: 'numeric', month: 'long', day: 'numeric' });
+const iso = date.toISOString().slice(0, 10);
 ---
 <article class="news-card">
-  <time datetime={date.toISOString()}>{formatted}</time>
-  <h3><a href={href}>{title}</a></h3>
-  <p>{description}</p>
+  <a class="news-link" href={href}>
+    <time datetime={iso} class="news-date">{formatted}</time>
+    <h3>{title}</h3>
+    <p>{description}</p>
+    <span class="news-more">Czytaj →</span>
+  </a>
 </article>
 <style>
-  .news-card { border: 1px solid #e2e6ec; border-radius: 10px; padding: 1.25rem; }
-  .news-card time { color: var(--muted); font-size: 0.9rem; }
-  .news-card h3 { margin: 0.25rem 0 0.5rem; }
-  .news-card a { text-decoration: none; color: var(--navy); }
-  .news-card a:hover { text-decoration: underline; }
+  .news-card {
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    background: #fff;
+    transition: border-color .15s ease, transform .15s ease;
+  }
+  .news-card:hover { border-color: var(--red); transform: translateY(-3px); }
+  .news-link {
+    display: block;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: var(--ink);
+    height: 100%;
+  }
+  .news-date {
+    font-family: var(--f-mono);
+    font-size: var(--step--1);
+    letter-spacing: 0.1em;
+    color: var(--muted);
+  }
+  .news-card h3 { font-size: var(--step-1); margin: 0.5rem 0 0.6rem; }
+  .news-card p { margin: 0 0 1rem; color: #34373d; }
+  .news-more {
+    font-family: var(--f-mono);
+    font-size: var(--step--1);
+    letter-spacing: 0.08em;
+    color: var(--red);
+  }
 </style>

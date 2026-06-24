@@ -2,6 +2,16 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 <BaseLayout title="Nie znaleziono — Lobby Obywatelskie">
-  <h1>404 — Nie znaleziono strony</h1>
-  <p><a href="/">Wróć na stronę główną</a></p>
+  <section class="nf container">
+    <span class="tick">✕</span>
+    <h1>404</h1>
+    <p>Tej strony nie ma na karcie.</p>
+    <a class="btn" href="/">Wróć na stronę główną</a>
+  </section>
+  <style>
+    .nf { padding: clamp(3rem, 10vw, 6rem) 1.5rem; text-align: center; }
+    .nf .tick { width: 3rem; height: 3rem; font-size: 1.4rem; margin-bottom: 1rem; }
+    .nf h1 { font-size: var(--step-4); margin: 0; }
+    .nf p { font-size: var(--step-1); color: #34373d; margin: 0.5rem 0 2rem; }
+  </style>
 </BaseLayout>

@@ -7,13 +7,20 @@ const posts = (await getCollection('aktualnosci', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 <BaseLayout title="Aktualności — Lobby Obywatelskie">
-  <h1>Aktualności</h1>
-  <div class="news-grid">
-    {posts.map((p) => (
-      <NewsCard title={p.data.title} date={p.data.date} description={p.data.description} href={`/aktualnosci/${p.slug}`} />
-    ))}
-  </div>
+  <header class="page-hero container">
+    <p class="eyebrow">Aktualności</p>
+    <h1>Co się dzieje.</h1>
+  </header>
+  <section class="container">
+    <div class="news-grid">
+      {posts.map((p) => (
+        <NewsCard title={p.data.title} date={p.data.date} description={p.data.description} href={`/aktualnosci/${p.slug}`} />
+      ))}
+    </div>
+  </section>
   <style>
-    .news-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); margin-top: 1.5rem; }
+    .page-hero { padding: clamp(2.5rem, 6vw, 4rem) 1.5rem; border-bottom: 1px solid var(--line); margin-bottom: 0; }
+    .page-hero h1 { font-size: var(--step-3); margin: 0; }
+    .news-grid { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); }
   </style>
 </BaseLayout>

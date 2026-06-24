@@ -1,12 +1,88 @@
 ---
 ---
 <section class="hero">
-  <h1>Razem możemy więcej</h1>
-  <p>Demokracja bezpośrednia w praktyce — to obywatele mają ostatni głos.</p>
-  <a class="btn" href="/kontakt">Dołącz do nas</a>
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Demokracja bezpośrednia</p>
+      <h1>Razem możemy<br /><span class="hl">więcej.</span></h1>
+      <p class="lede">
+        Gdy politycy, korporacje i media nie działają w interesie ludzi —
+        ostatni głos należy do obywateli. Jedna osoba, jeden równy głos.
+      </p>
+      <div class="hero-actions">
+        <a class="btn" href="/kontakt">Dołącz do nas</a>
+        <a class="btn btn--ghost" href="/manifest">Przeczytaj Manifest</a>
+      </div>
+    </div>
+
+    <aside class="ballot" aria-hidden="true">
+      <p class="ballot-head">Karta · głosowanie</p>
+      <ul class="ballot-list">
+        <li><span class="box"></span> Wstrzymać niekorzystną ustawę</li>
+        <li class="marked"><span class="box">✕</span> Oddać głos obywatelom</li>
+        <li><span class="box"></span> Zostawić decyzję politykom</li>
+      </ul>
+      <p class="ballot-foot">1 osoba — 1 głos</p>
+    </aside>
+  </div>
 </section>
 <style>
-  .hero { padding: 4rem 0 2rem; text-align: center; }
-  .hero h1 { font-size: clamp(2rem, 6vw, 3.5rem); }
-  .hero p { font-size: 1.25rem; color: var(--muted); max-width: 40rem; margin: 1rem auto 2rem; }
+  .hero { border-bottom: 1px solid var(--line); padding: clamp(2.5rem, 6vw, 4.5rem) 0; margin: 0; }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+  h1 { font-size: var(--step-4); margin: 0 0 1.25rem; }
+  .hl { color: var(--red); }
+  .lede { font-size: var(--step-1); max-width: 34rem; margin: 0 0 2rem; color: #34373d; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; }
+
+  .ballot {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-top: 5px solid var(--red);
+    border-radius: 2px;
+    padding: 1.6rem 1.5rem;
+    box-shadow: 14px 14px 0 var(--paper-2);
+  }
+  .ballot-head, .ballot-foot {
+    font-family: var(--f-mono);
+    font-size: var(--step--1);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0;
+  }
+  .ballot-list { list-style: none; margin: 1.1rem 0; padding: 0; }
+  .ballot-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px dashed var(--line);
+    font-family: var(--f-display);
+    font-weight: 500;
+    font-size: 1.02rem;
+  }
+  .box {
+    flex: 0 0 auto;
+    width: 1.6rem;
+    height: 1.6rem;
+    border: 2px solid var(--ink);
+    border-radius: 2px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--red);
+    font-weight: 800;
+  }
+  .marked { color: var(--red); }
+  .ballot-foot { text-align: right; margin-top: 0.4rem; color: var(--ink); }
+
+  @media (max-width: 760px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .ballot { box-shadow: 8px 8px 0 var(--paper-2); }
+  }
 </style>

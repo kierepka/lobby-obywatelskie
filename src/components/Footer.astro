@@ -2,13 +2,45 @@
 const year = new Date().getFullYear();
 ---
 <footer class="site-footer">
-  <div class="container">
-    <p>Kontakt: <a href="mailto:kontakt@lobbyobywatelskie.pl">kontakt@lobbyobywatelskie.pl</a></p>
-    <p>Spotkania: środy, godz. 21:00.</p>
-    <p>&copy; {year} Lobby Obywatelskie</p>
+  <div class="container footer-grid">
+    <div>
+      <p class="footer-brand"><span aria-hidden="true">✕</span> Lobby Obywatelskie</p>
+      <p class="footer-tag">Razem możemy więcej.</p>
+    </div>
+    <div class="footer-meta">
+      <p><a href="mailto:kontakt@lobbyobywatelskie.pl">kontakt@lobbyobywatelskie.pl</a></p>
+      <p>Spotkania: środy, 21:00</p>
+      <p class="footer-copy">&copy; {year} Lobby Obywatelskie</p>
+    </div>
   </div>
 </footer>
 <style>
-  .site-footer { background: var(--navy-light); color: #fff; padding: 2rem 0; margin-top: 3rem; }
-  .site-footer a { color: #fff; }
+  .site-footer {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 3rem 0;
+    margin-top: clamp(3rem, 8vw, 6rem);
+  }
+  .footer-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .footer-brand {
+    font-family: var(--f-display);
+    font-weight: 800;
+    font-size: 1.2rem;
+    margin: 0;
+  }
+  .footer-brand span { color: var(--red); }
+  .footer-tag { color: #b8b8ad; margin: 0.25rem 0 0; }
+  .footer-meta { font-family: var(--f-mono); font-size: 0.85rem; line-height: 1.9; text-align: right; }
+  .footer-meta p { margin: 0; }
+  .site-footer a { color: var(--paper); text-decoration: underline; }
+  .footer-copy { color: #8a8a80; margin-top: 0.5rem; }
+  @media (max-width: 560px) {
+    .footer-meta { text-align: left; }
+  }
 </style>

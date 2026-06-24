@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 const emaile = [
-  { adres: 'kontakt@lobbyobywatelskie.pl', opis: 'Kontakt ogólny (główny kanał)' },
+  { adres: 'kontakt@lobbyobywatelskie.pl', opis: 'Kontakt ogólny — główny kanał' },
   { adres: 'wspolpraca@lobbyobywatelskie.pl', opis: 'Współpraca' },
   { adres: 'media@lobbyobywatelskie.pl', opis: 'Media' },
   { adres: 'zgloszenia@lobbyobywatelskie.pl', opis: 'Zgłoszenia' },
@@ -10,16 +10,41 @@ const emaile = [
 ];
 ---
 <BaseLayout title="Kontakt — Lobby Obywatelskie">
-  <h1>Kontakt</h1>
-  <p>Spotykamy się w każdą środę o godzinie 21:00. Napisz do nas:</p>
-  <ul class="emaile">
-    {emaile.map((e) => (
-      <li><a href={`mailto:${e.adres}`}>{e.adres}</a> — {e.opis}</li>
-    ))}
-  </ul>
-  <p><a class="btn" href="mailto:kontakt@lobbyobywatelskie.pl?subject=Chc%C4%99%20do%C5%82%C4%85czy%C4%87">Chcę dołączyć</a></p>
+  <header class="page-hero container">
+    <p class="eyebrow">Kontakt</p>
+    <h1>Dołącz do nas.</h1>
+    <p class="lede">Spotykamy się w każdą środę o 21:00. Napisz — odpowiadamy.</p>
+    <a class="btn" href="mailto:kontakt@lobbyobywatelskie.pl?subject=Chc%C4%99%20do%C5%82%C4%85czy%C4%87">Chcę dołączyć</a>
+  </header>
+
+  <section class="container">
+    <p class="eyebrow">Adresy</p>
+    <ul class="emaile">
+      {emaile.map((e) => (
+        <li>
+          <a href={`mailto:${e.adres}`}>{e.adres}</a>
+          <span class="opis">{e.opis}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+
   <style>
-    .emaile { list-style: none; padding: 0; }
-    .emaile li { padding: 0.4rem 0; }
+    .page-hero { padding: clamp(2.5rem, 6vw, 4rem) 1.5rem; border-bottom: 1px solid var(--line); margin-bottom: 0; }
+    .page-hero h1 { font-size: var(--step-3); margin: 0 0 1rem; }
+    .page-hero .lede { font-size: var(--step-1); max-width: 34rem; color: #34373d; margin: 0 0 1.75rem; }
+
+    .emaile { list-style: none; padding: 0; margin: 0; }
+    .emaile li {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.5rem 1.5rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .emaile a { font-family: var(--f-mono); font-size: 1rem; }
+    .opis { color: var(--muted); font-size: var(--step--1); }
   </style>
 </BaseLayout>
