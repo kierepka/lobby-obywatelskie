@@ -3,86 +3,173 @@
 <section class="hero">
   <div class="container hero-grid">
     <div class="hero-copy">
-      <p class="eyebrow">Demokracja bezpośrednia</p>
-      <h1>Razem możemy<br /><span class="hl">więcej.</span></h1>
+      <p class="eyebrow">Demokracja zaczyna się od Ciebie</p>
+      <h1>Razem możemy <span class="hl">więcej.</span></h1>
       <p class="lede">
-        Gdy politycy, korporacje i media nie działają w interesie ludzi —
-        ostatni głos należy do obywateli. Jedna osoba, jeden równy głos.
+        Oddajemy decyzje w ręce obywateli. Bez partyjnych podziałów,
+        bez pustych obietnic — z równym głosem dla każdego.
       </p>
       <div class="hero-actions">
         <a class="btn" href="/kontakt">Dołącz do nas</a>
-        <a class="btn btn--ghost" href="/manifest">Przeczytaj Manifest</a>
+        <a class="btn btn--ghost" href="/manifest">Poznaj nasz manifest</a>
+      </div>
+      <div class="hero-proof" aria-label="Najważniejsze zasady">
+        <span><b>1</b> osoba</span>
+        <i aria-hidden="true"></i>
+        <span><b>1</b> głos</span>
+        <i aria-hidden="true"></i>
+        <span><b>100%</b> oddolnie</span>
       </div>
     </div>
 
-    <aside class="ballot" aria-hidden="true">
-      <p class="ballot-head">Karta · głosowanie</p>
-      <ul class="ballot-list">
-        <li><span class="box"></span> Wstrzymać niekorzystną ustawę</li>
-        <li class="marked"><span class="box">✕</span> Oddać głos obywatelom</li>
-        <li><span class="box"></span> Zostawić decyzję politykom</li>
-      </ul>
-      <p class="ballot-foot">1 osoba — 1 głos</p>
-    </aside>
+    <div class="visual" aria-hidden="true">
+      <span class="orbit orbit-one"></span>
+      <span class="orbit orbit-two"></span>
+      <div class="civic-card">
+        <div class="card-top">
+          <span class="live-dot"></span>
+          <span>Obywatelska inicjatywa</span>
+          <strong>01</strong>
+        </div>
+        <p class="card-kicker">Twój głos ma znaczenie</p>
+        <p class="card-title">Decydujmy wspólnie o tym, co wspólne.</p>
+        <div class="vote-row">
+          <div class="avatars"><span>A</span><span>M</span><span>K</span><span>+</span></div>
+          <div class="vote-progress"><span></span></div>
+          <b>78%</b>
+        </div>
+      </div>
+      <div class="people">
+        <span class="person p1"><i></i></span>
+        <span class="person p2"><i></i></span>
+        <span class="person p3"><i></i></span>
+        <span class="person p4"><i></i></span>
+        <span class="person p5"><i></i></span>
+      </div>
+      <div class="city">
+        <span class="b1"></span><span class="b2"></span><span class="b3"></span>
+        <span class="b4"></span><span class="b5"></span><span class="b6"></span>
+      </div>
+      <div class="mini-card">
+        <span class="check">✓</span>
+        <p><b>Wspólna decyzja</b><small>Każdy głos liczy się tak samo</small></p>
+      </div>
+    </div>
   </div>
 </section>
 <style>
-  .hero { border-bottom: 1px solid var(--line); padding: clamp(2.5rem, 6vw, 4.5rem) 0; margin: 0; }
+  .hero {
+    overflow: hidden;
+    margin: 0;
+    padding: clamp(4rem, 8vw, 7.5rem) 0 clamp(5rem, 9vw, 8rem);
+    border-bottom: 1px solid var(--line);
+    background: linear-gradient(135deg, rgba(255,255,255,.72), rgba(234,240,245,.3));
+  }
   .hero-grid {
     display: grid;
-    grid-template-columns: 1.25fr 1fr;
-    gap: clamp(2rem, 5vw, 4rem);
+    grid-template-columns: minmax(0, 1.05fr) minmax(28rem, .95fr);
+    gap: clamp(2rem, 6vw, 5rem);
     align-items: center;
   }
-  h1 { font-size: var(--step-4); margin: 0 0 1.25rem; }
+  h1 {
+    max-width: 10ch;
+    font-size: var(--step-4);
+    line-height: .94;
+    margin: 0 0 1.5rem;
+  }
   .hl { color: var(--red); }
-  .lede { font-size: var(--step-1); max-width: 34rem; margin: 0 0 2rem; color: #34373d; }
-  .hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; }
-
-  .ballot {
-    background: #fff;
-    border: 1px solid var(--line);
-    border-top: 5px solid var(--red);
-    border-radius: 2px;
-    padding: 1.6rem 1.5rem;
-    box-shadow: 14px 14px 0 var(--paper-2);
-  }
-  .ballot-head, .ballot-foot {
-    font-family: var(--f-mono);
-    font-size: var(--step--1);
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin: 0;
-  }
-  .ballot-list { list-style: none; margin: 1.1rem 0; padding: 0; }
-  .ballot-list li {
+  .lede { font-size: var(--step-1); max-width: 33rem; margin: 0 0 2rem; color: #455465; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 0.85rem; }
+  .hero-proof {
     display: flex;
     align-items: center;
-    gap: 0.9rem;
-    padding: 0.7rem 0;
-    border-bottom: 1px dashed var(--line);
-    font-family: var(--f-display);
-    font-weight: 500;
-    font-size: 1.02rem;
+    gap: 1rem;
+    margin-top: 2.3rem;
+    font: 700 0.78rem var(--f-display);
+    letter-spacing: .03em;
+    text-transform: uppercase;
+    color: var(--muted);
   }
-  .box {
-    flex: 0 0 auto;
-    width: 1.6rem;
-    height: 1.6rem;
-    border: 2px solid var(--ink);
-    border-radius: 2px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--red);
-    font-weight: 800;
-  }
-  .marked { color: var(--red); }
-  .ballot-foot { text-align: right; margin-top: 0.4rem; color: var(--ink); }
+  .hero-proof b { color: var(--blue); font-size: 1.05rem; }
+  .hero-proof i { width: 4px; height: 4px; border-radius: 50%; background: var(--red); }
 
-  @media (max-width: 760px) {
+  .visual { position: relative; min-height: 30rem; isolation: isolate; }
+  .visual::before {
+    content: "";
+    position: absolute;
+    width: 28rem;
+    height: 28rem;
+    top: 0;
+    right: -4rem;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #eaf1f8, #dce7f1);
+    z-index: -3;
+  }
+  .orbit { position: absolute; border: 1px solid rgba(21,59,104,.15); border-radius: 50%; z-index: -2; }
+  .orbit-one { width: 25rem; height: 16rem; right: -2rem; top: 5rem; transform: rotate(-20deg); }
+  .orbit-two { width: 23rem; height: 13rem; right: 1rem; top: 7rem; transform: rotate(35deg); }
+  .civic-card {
+    position: absolute;
+    z-index: 3;
+    top: 2.3rem;
+    left: 0;
+    right: 1.5rem;
+    padding: 1.45rem;
+    border: 1px solid rgba(255,255,255,.8);
+    border-radius: 1rem;
+    background: rgba(255,255,255,.92);
+    box-shadow: var(--shadow-lg);
+    transform: rotate(-2deg);
+  }
+  .card-top { display: flex; align-items: center; gap: .55rem; font: 700 .67rem var(--f-display); text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
+  .card-top strong { margin-left: auto; font-size: 1.2rem; color: #d6dee7; }
+  .live-dot { width: .6rem; height: .6rem; border-radius: 50%; background: var(--red); box-shadow: 0 0 0 4px rgba(217,13,47,.12); }
+  .card-kicker { margin: 2rem 0 .4rem; color: var(--red); font: 700 .75rem var(--f-display); text-transform: uppercase; letter-spacing: .09em; }
+  .card-title { max-width: 15ch; margin: 0; font: 700 2rem/1.08 var(--f-display); letter-spacing: -.04em; color: var(--ink); }
+  .vote-row { display: flex; align-items: center; gap: .8rem; margin-top: 2rem; }
+  .avatars { display: flex; }
+  .avatars span {
+    display: grid;
+    place-items: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    margin-left: -.4rem;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background: var(--blue);
+    color: #fff;
+    font: 700 .55rem var(--f-display);
+  }
+  .avatars span:first-child { margin-left: 0; background: var(--red); }
+  .avatars span:nth-child(3) { background: #6c839d; }
+  .avatars span:last-child { background: var(--paper-2); color: var(--blue); }
+  .vote-progress { flex: 1; height: .4rem; overflow: hidden; border-radius: 1rem; background: var(--paper-2); }
+  .vote-progress span { display: block; width: 78%; height: 100%; border-radius: inherit; background: var(--red); }
+  .vote-row b { font: 700 .8rem var(--f-display); color: var(--blue); }
+  .city { position: absolute; z-index: 0; left: 3rem; right: 0; bottom: 3.8rem; height: 9rem; display: flex; align-items: end; gap: .5rem; opacity: .75; }
+  .city span { display: block; width: 15%; border: 2px solid #9fb1c2; border-bottom: 0; background: repeating-linear-gradient(to bottom, transparent 0 13px, #bdcad6 14px 15px); }
+  .b1 { height: 45%; }.b2 { height: 72%; }.b3 { height: 55%; }.b4 { height: 94%; }.b5 { height: 64%; }.b6 { height: 40%; }
+  .people { position: absolute; z-index: 2; left: 2rem; right: 1rem; bottom: 1rem; height: 8rem; display: flex; justify-content: space-around; align-items: end; }
+  .person { position: relative; display: block; width: 2.5rem; height: 6.2rem; border-radius: 1rem 1rem .3rem .3rem; background: var(--blue); box-shadow: inset 0 -2.4rem 0 #24354a; }
+  .person::before { content: ""; position: absolute; width: 1.85rem; height: 1.85rem; top: -1.55rem; left: .32rem; border-radius: 50%; background: #e4b399; border: 3px solid var(--ink); }
+  .person::after { content: ""; position: absolute; left: -.7rem; top: 1rem; width: 3.9rem; height: .65rem; border-radius: 1rem; background: inherit; transform: rotate(-8deg); }
+  .person i { position: absolute; left: .15rem; right: .15rem; bottom: -1.9rem; height: 2rem; border-left: .9rem solid var(--ink); border-right: .9rem solid var(--ink); }
+  .p1 { height: 4.6rem; transform: scale(.86); background: #7f96ad; }.p2 { background: var(--red); }.p3 { height: 6.8rem; }.p4 { background: #fff; border: 2px solid var(--blue); }.p5 { height: 5rem; transform: scale(.9); background: var(--red); }
+  .mini-card { position: absolute; z-index: 4; right: -1rem; bottom: 2rem; display: flex; align-items: center; gap: .8rem; padding: .85rem 1rem; border-radius: .75rem; background: #fff; box-shadow: var(--shadow-sm); }
+  .check { display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: 50%; background: #e5f3ed; color: #167252; font-weight: 800; }
+  .mini-card p { margin: 0; font: 700 .72rem/1.3 var(--f-display); }
+  .mini-card small { display: block; margin-top: .15rem; font: 400 .65rem var(--f-body); color: var(--muted); }
+
+  @media (max-width: 960px) {
     .hero-grid { grid-template-columns: 1fr; }
-    .ballot { box-shadow: 8px 8px 0 var(--paper-2); }
+    .hero-copy { max-width: 42rem; }
+    .visual { width: min(100%, 35rem); margin: 0 auto; }
+  }
+  @media (max-width: 560px) {
+    .hero { padding-top: 3rem; }
+    .visual { min-height: 26rem; transform: scale(.9); transform-origin: top center; margin-bottom: -3rem; }
+    .civic-card { left: -1rem; right: 0; }
+    .mini-card { right: -1rem; }
+    .hero-proof { gap: .6rem; font-size: .66rem; }
   }
 </style>

@@ -6,17 +6,18 @@ const social = [
 ];
 const legal = [
   { href: '/manifest', label: 'Manifest' },
+  { href: '/aktualnosci', label: 'Aktualności' },
   { href: '/kontakt', label: 'Kontakt' },
   { href: '/polityka-prywatnosci', label: 'Polityka prywatności' },
-  { href: '/deklaracja-dostepnosci', label: 'Deklaracja dostępności' },
+  { href: '/deklaracja-dostepnosci', label: 'Dostępność' },
 ];
 ---
 <footer class="site-footer">
   <div class="container footer-grid">
     <div class="footer-brand-col">
       <img class="footer-logo" src="/img/logo.png" alt="Lobby Obywatelskie" width="1189" height="343" />
-      <p class="footer-tag">Razem decydujeMy, razem tworzyMy.</p>
-      <a class="btn footer-cta" href="/kontakt">Dołącz do nas</a>
+      <p class="footer-tag">Oddolny ruch dla ludzi, którzy chcą mieć realny wpływ na wspólne decyzje.</p>
+      <a class="footer-mail" href="mailto:kontakt@lobbyobywatelskie.pl">kontakt@lobbyobywatelskie.pl</a>
     </div>
 
     <nav class="footer-nav" aria-label="Stopka">
@@ -27,59 +28,61 @@ const legal = [
     </nav>
 
     <nav class="footer-nav" aria-label="Społeczności">
-      <p class="footer-h">Dołącz</p>
+      <p class="footer-h">Znajdź nas</p>
       <ul>
         {social.map((s) => (
           <li><a href={s.href} target="_blank" rel="noopener noreferrer">{s.label} ↗</a></li>
         ))}
-        <li><a href="mailto:kontakt@lobbyobywatelskie.pl">E-mail</a></li>
       </ul>
+      <p class="meet"><b>Spotkania online</b><span>Środy, godz. 21:00</span></p>
     </nav>
   </div>
   <div class="container footer-bottom">
     <p>&copy; {year} Lobby Obywatelskie</p>
-    <p>Spotkania: środy, 21:00</p>
+    <p>Jedna osoba. Jeden głos.</p>
   </div>
 </footer>
 <style>
   .site-footer {
-    background: var(--ink);
-    color: var(--paper);
-    padding: 3rem 0 2rem;
-    margin-top: clamp(3rem, 8vw, 6rem);
-    border-top: 3px solid var(--red);
+    background: #0c2039;
+    color: #fff;
+    padding: 4.5rem 0 2rem;
+    margin-top: clamp(4rem, 9vw, 7rem);
+    border-top: 5px solid var(--red);
   }
   .footer-grid {
     display: grid;
-    grid-template-columns: 1.4fr 1fr 1fr;
-    gap: 2.5rem;
+    grid-template-columns: 1.6fr .8fr .8fr;
+    gap: clamp(2rem, 6vw, 5rem);
     align-items: start;
   }
-  .footer-logo { height: 2.4rem; width: auto; display: block; margin-bottom: 0.9rem; }
-  .footer-tag { color: #b8b8ad; margin: 0 0 1.25rem; max-width: 22rem; }
-  .footer-cta { padding: 0.6rem 1.2rem; }
+  .footer-logo { height: 2.7rem; width: auto; display: block; margin-bottom: 1.25rem; filter: brightness(0) invert(1); }
+  .footer-tag { color: #aebccc; margin: 0 0 1rem; max-width: 25rem; }
+  .footer-mail { color: #fff; font: 700 .82rem var(--f-display); text-decoration-color: var(--red); }
   .footer-h {
-    font-family: var(--f-mono);
-    font-size: 0.75rem;
-    letter-spacing: 0.16em;
+    font: 700 .7rem var(--f-display);
+    letter-spacing: .14em;
     text-transform: uppercase;
-    color: #8a8a80;
-    margin: 0 0 0.9rem;
+    color: #92a6bb;
+    margin: 0 0 1rem;
   }
   .footer-nav ul { list-style: none; padding: 0; margin: 0; line-height: 2.1; }
-  .site-footer a { color: var(--paper); text-decoration: none; }
-  .footer-nav a:hover { text-decoration: underline; }
+  .site-footer a { color: #e6edf4; text-decoration: none; }
+  .footer-nav a:hover { color: #fff; text-decoration: underline; text-decoration-color: var(--red); }
+  .meet { display: grid; gap: .2rem; margin-top: 1.6rem; font-size: .85rem; }
+  .meet span { color: #8fa1b4; }
   .footer-bottom {
     display: flex;
     justify-content: space-between;
     gap: 1rem;
     flex-wrap: wrap;
-    margin-top: 2.5rem;
+    margin-top: 3.5rem;
     padding-top: 1.5rem;
-    border-top: 1px solid #33353b;
-    font-family: var(--f-mono);
-    font-size: 0.8rem;
-    color: #8a8a80;
+    border-top: 1px solid #253a52;
+    font: 700 .68rem var(--f-display);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: #92a6bb;
   }
   .footer-bottom p { margin: 0; }
   @media (max-width: 700px) {

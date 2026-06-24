@@ -12,69 +12,120 @@ const isActive = (href: string) =>
 <header class="site-header">
   <div class="container header-inner">
     <a href="/" class="logo" aria-label="Lobby Obywatelskie — strona główna">
-      <img src="/img/logo.png" alt="Lobby Obywatelskie" width="1189" height="343" />
+      <img class="logo-mark" src="/img/logo-mark.png" alt="" width="486" height="330" />
+      <span class="logo-text">Lobby<br />Obywatelskie</span>
     </a>
-    <button class="nav-toggle" aria-label="Otwórz menu" aria-expanded="false" aria-controls="main-nav">Menu</button>
+    <button class="nav-toggle" aria-label="Otwórz menu" aria-expanded="false" aria-controls="main-nav">
+      <span></span><span></span><span></span>
+    </button>
     <nav id="main-nav" class="nav" aria-label="Główna nawigacja">
-      {links.map((l) => (
-        <a href={l.href} aria-current={isActive(l.href) ? 'page' : undefined}>{l.label}</a>
-      ))}
+      <div class="nav-links">
+        {links.map((l) => (
+          <a href={l.href} aria-current={isActive(l.href) ? 'page' : undefined}>{l.label}</a>
+        ))}
+      </div>
+      <a class="header-cta" href="/kontakt">Dołącz do nas <span aria-hidden="true">→</span></a>
     </nav>
   </div>
 </header>
 <style>
   .site-header {
-    background: var(--ink);
-    border-bottom: 3px solid var(--red);
+    background: rgba(255, 255, 255, 0.92);
+    border-bottom: 1px solid rgba(220, 228, 235, 0.9);
+    box-shadow: 0 5px 22px rgba(13, 33, 59, 0.05);
+    backdrop-filter: blur(16px);
     position: sticky;
     top: 0;
     z-index: 20;
   }
   .header-inner {
+    min-height: 5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0.85rem 1.5rem;
+    gap: 2rem;
   }
-  .logo { display: inline-flex; align-items: center; }
-  .logo img { height: 2.1rem; width: auto; display: block; }
-  .nav { display: flex; gap: 1.75rem; }
-  .nav a {
-    font-family: var(--f-mono);
-    font-size: 0.8rem;
-    letter-spacing: 0.14em;
+  .logo { display: inline-flex; align-items: center; gap: 0.65rem; flex: 0 0 auto; }
+  .logo-mark { height: 2.4rem; width: auto; display: block; }
+  .logo-text {
+    font-family: var(--f-display);
+    font-weight: 800;
+    font-size: 1.02rem;
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    color: var(--ink);
     text-transform: uppercase;
-    color: #f3f1ea;
-    text-decoration: none;
-    padding: 0.25rem 0;
-    border-bottom: 2px solid transparent;
   }
-  .nav a:hover { border-color: var(--red); }
-  .nav a[aria-current="page"] { border-color: var(--red); color: #fff; }
+  .nav, .nav-links { display: flex; align-items: center; }
+  .nav { gap: clamp(1.5rem, 3vw, 2.5rem); }
+  .nav-links { gap: clamp(1.15rem, 2.5vw, 2rem); }
+  .nav-links a {
+    position: relative;
+    font-family: var(--f-display);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.045em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 1.9rem 0 1.7rem;
+  }
+  .nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 100%;
+    bottom: 1.25rem;
+    height: 3px;
+    border-radius: 1rem;
+    background: var(--red);
+    transition: right .18s ease;
+  }
+  .nav-links a:hover::after,
+  .nav-links a[aria-current="page"]::after { right: 0; }
+  .header-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.68rem 1rem;
+    border-radius: 0.45rem;
+    background: var(--red);
+    color: #fff;
+    font: 700 0.78rem var(--f-display);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+  }
+  .header-cta:hover { background: var(--red-dark); }
   .nav-toggle {
     display: none;
-    font-family: var(--f-mono);
-    font-size: 0.8rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    background: none;
-    border: 1px solid #4a4c52;
-    border-radius: 2px;
-    color: #f3f1ea;
-    padding: 0.45rem 0.8rem;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0.7rem;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 0.45rem;
     cursor: pointer;
   }
-  @media (max-width: 640px) {
+  .nav-toggle span { display: block; height: 2px; margin: 4px 0; background: var(--ink); }
+  @media (max-width: 760px) {
+    .header-inner { min-height: 4.5rem; flex-wrap: wrap; }
+    .logo-mark { height: 2.05rem; }
     .nav-toggle { display: block; }
     .nav {
       display: none;
-      flex-direction: column;
-      gap: 1rem;
       width: 100%;
-      padding-top: 1rem;
+      padding: 0 0 1.25rem;
+      border-top: 1px solid var(--line);
+      flex-direction: column;
+      align-items: stretch;
+      gap: 1rem;
     }
     .nav.open { display: flex; }
-    .header-inner { flex-wrap: wrap; }
+    .nav-links { align-items: stretch; flex-direction: column; gap: 0; }
+    .nav-links a { padding: 0.8rem 0; border-bottom: 1px solid var(--line); }
+    .nav-links a::after { display: none; }
+    .header-cta { justify-content: center; padding: 0.85rem; }
   }
 </style>
 <script>

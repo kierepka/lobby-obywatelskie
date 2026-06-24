@@ -6,39 +6,52 @@ const iso = date.toISOString().slice(0, 10);
 ---
 <article class="news-card">
   <a class="news-link" href={href}>
-    <time datetime={iso} class="news-date">{formatted}</time>
+    <div class="news-meta">
+      <span>Aktualność</span>
+      <time datetime={iso}>{formatted}</time>
+    </div>
     <h3>{title}</h3>
     <p>{description}</p>
-    <span class="news-more">Czytaj →</span>
+    <span class="news-more">Czytaj więcej <i>→</i></span>
   </a>
 </article>
 <style>
   .news-card {
+    min-height: 19rem;
     border: 1px solid var(--line);
-    border-radius: 2px;
-    background: #fff;
-    transition: border-color .15s ease, transform .15s ease;
+    border-radius: .9rem;
+    background: rgba(255,255,255,.82);
+    overflow: hidden;
+    transition: border-color .18s ease, transform .18s ease, box-shadow .18s ease;
   }
-  .news-card:hover { border-color: var(--red); transform: translateY(-3px); }
+  .news-card:hover { border-color: #c6d4e2; transform: translateY(-4px); box-shadow: var(--shadow-sm); }
   .news-link {
-    display: block;
-    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    padding: 1.6rem;
     text-decoration: none;
     color: var(--ink);
     height: 100%;
   }
-  .news-date {
-    font-family: var(--f-mono);
-    font-size: var(--step--1);
-    letter-spacing: 0.1em;
-    color: var(--muted);
+  .news-meta { display: flex; justify-content: space-between; gap: 1rem; }
+  .news-meta span, .news-meta time {
+    font: 700 .67rem var(--f-display);
+    letter-spacing: .09em;
+    text-transform: uppercase;
   }
-  .news-card h3 { font-size: var(--step-1); margin: 0.5rem 0 0.6rem; }
-  .news-card p { margin: 0 0 1rem; color: #34373d; }
+  .news-meta span { color: var(--red); }
+  .news-meta time { color: var(--muted); }
+  .news-card h3 { font-size: var(--step-1); margin: 2.6rem 0 .7rem; }
+  .news-card p { margin: 0 0 1.5rem; color: var(--muted); }
   .news-more {
-    font-family: var(--f-mono);
-    font-size: var(--step--1);
-    letter-spacing: 0.08em;
-    color: var(--red);
+    display: inline-flex;
+    align-items: center;
+    gap: .55rem;
+    margin-top: auto;
+    font: 700 .75rem var(--f-display);
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: var(--blue);
   }
+  .news-more i { color: var(--red); font-style: normal; font-size: 1rem; }
 </style>

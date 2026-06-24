@@ -7,35 +7,83 @@ import { getCollection } from 'astro:content';
 const posts = (await getCollection('aktualnosci', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 3);
+
+const steps = [
+  {
+    number: '01',
+    title: 'Proponujesz',
+    text: 'Każdy może wnieść pomysł. Trzy podpisy wystarczą, by rozpocząć obywatelską inicjatywę.',
+    icon: '✦',
+  },
+  {
+    number: '02',
+    title: 'Dyskutujemy',
+    text: 'Otwarta, rzeczowa debata daje przestrzeń na argumenty, zanim zapadnie wspólna decyzja.',
+    icon: '◎',
+  },
+  {
+    number: '03',
+    title: 'Decydujesz',
+    text: 'Tajne referendum i prosta zasada: jedna osoba to jeden, równie ważny głos.',
+    icon: '✓',
+  },
+];
 ---
 <BaseLayout title="Lobby Obywatelskie — Razem możemy więcej">
   <Hero />
 
-  <section class="container">
-    <p class="eyebrow">Jak to działa</p>
+  <section class="container intro-section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Prosty mechanizm</p>
+        <h2>Demokracja, która naprawdę działa.</h2>
+      </div>
+      <p>
+        Dajemy społeczności jasny proces przechodzenia od pomysłu do wspólnej,
+        wiążącej decyzji.
+      </p>
+    </div>
     <div class="how">
-      <div class="how-item">
-        <span class="tick">✕</span>
-        <h3>Proponujesz</h3>
-        <p>Trzy podpisy wystarczą, by rozpocząć obywatelską inicjatywę.</p>
+      {steps.map((step) => (
+        <article class="how-item">
+          <div class="how-top">
+            <span class="how-icon">{step.icon}</span>
+            <span class="how-number">{step.number}</span>
+          </div>
+          <h3>{step.title}</h3>
+          <p>{step.text}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="manifest-band">
+    <div class="container manifest-grid">
+      <div class="manifest-mark" aria-hidden="true">
+        <span>1</span>
+        <div><b>OSOBA</b><i></i><b>GŁOS</b></div>
+        <span>1</span>
       </div>
-      <div class="how-item">
-        <span class="tick">✕</span>
-        <h3>Dyskutujemy</h3>
-        <p>Otwarta debata, zanim cokolwiek trafi pod głosowanie.</p>
-      </div>
-      <div class="how-item">
-        <span class="tick">✕</span>
-        <h3>Decydujesz</h3>
-        <p>Tajne referendum. Jedna osoba — jeden równy głos.</p>
+      <div class="manifest-copy">
+        <p class="eyebrow">Nasze zobowiązanie</p>
+        <h2>Nie czekamy, aż ktoś zmieni świat za nas.</h2>
+        <p>
+          Jesteśmy neutralnym politycznie, oddolnym ruchem społecznym.
+          Łączą nas wolność, odpowiedzialność i przekonanie, że sprawy wspólne
+          powinny być rozstrzygane wspólnie.
+        </p>
+        <a class="text-link" href="/manifest">Przeczytaj manifest <span>→</span></a>
       </div>
     </div>
   </section>
 
-  <section class="container">
+  <section class="container news-section">
     <div class="news-head">
-      <p class="eyebrow">Aktualności</p>
-      <a class="news-all" href="/aktualnosci">Wszystkie →</a>
+      <div>
+        <p class="eyebrow">Aktualności</p>
+        <h2>Jesteśmy w ruchu.</h2>
+      </div>
+      <a class="news-all" href="/aktualnosci">Wszystkie aktualności <span>→</span></a>
     </div>
     <div class="news-grid">
       {posts.map((p) => (
@@ -44,14 +92,118 @@ const posts = (await getCollection('aktualnosci', ({ data }) => !data.draft))
     </div>
   </section>
 
+  <section class="container join">
+    <div>
+      <p class="eyebrow">Spotkajmy się</p>
+      <h2>Masz pomysł? Zacznijmy od rozmowy.</h2>
+      <p>Spotykamy się online w każdą środę o 21:00.</p>
+    </div>
+    <a class="btn" href="/kontakt">Napisz do nas</a>
+  </section>
+
   <style>
-    .how { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-    .how-item { border-top: 2px solid var(--ink); padding-top: 1.1rem; }
-    .how-item h3 { font-size: var(--step-1); margin: 0.9rem 0 0.4rem; }
-    .how-item p { margin: 0; color: #34373d; }
-    .news-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
-    .news-all { font-family: var(--f-mono); font-size: var(--step--1); letter-spacing: 0.08em; text-transform: uppercase; }
-    .news-grid { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); }
-    @media (max-width: 700px) { .how { grid-template-columns: 1fr; } }
+    .section-heading {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(18rem, .8fr);
+      gap: 3rem;
+      align-items: end;
+      margin-bottom: 2.5rem;
+    }
+    .section-heading h2, .news-head h2, .manifest-copy h2, .join h2 {
+      font-size: var(--step-3);
+      margin: 0;
+    }
+    .section-heading > p { max-width: 31rem; margin: 0; color: var(--muted); }
+    .how { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
+    .how-item {
+      min-height: 19rem;
+      padding: 1.6rem;
+      border: 1px solid var(--line);
+      border-radius: .9rem;
+      background: rgba(255,255,255,.75);
+      box-shadow: 0 10px 35px rgba(13,33,59,.045);
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .how-item:hover { transform: translateY(-5px); border-color: #c7d5e3; box-shadow: var(--shadow-sm); }
+    .how-top { display: flex; align-items: center; justify-content: space-between; }
+    .how-icon {
+      display: grid;
+      place-items: center;
+      width: 3.25rem;
+      height: 3.25rem;
+      border-radius: .8rem;
+      background: var(--blue-light);
+      color: var(--blue);
+      font: 700 1.3rem var(--f-display);
+    }
+    .how-item:nth-child(2) .how-icon { background: #fce8ec; color: var(--red); }
+    .how-number { font: 700 1.7rem var(--f-display); color: #dde5ec; }
+    .how-item h3 { font-size: var(--step-2); margin: 3rem 0 .8rem; }
+    .how-item p { margin: 0; color: var(--muted); }
+
+    .manifest-band {
+      padding: clamp(4rem, 8vw, 7rem) 0;
+      background: var(--blue);
+      color: #fff;
+      overflow: hidden;
+    }
+    .manifest-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(3rem, 8vw, 7rem); align-items: center; }
+    .manifest-mark {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      min-height: 18rem;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,.09), transparent 65%);
+      font: 700 clamp(4rem, 10vw, 8rem)/1 var(--f-display);
+    }
+    .manifest-mark > span:last-child { color: var(--red); }
+    .manifest-mark div { display: grid; justify-items: center; gap: .6rem; font-size: .68rem; letter-spacing: .14em; }
+    .manifest-mark i { width: 2.8rem; height: 3px; background: var(--red); transform: rotate(-12deg); }
+    .manifest-copy .eyebrow { color: #fff; }
+    .manifest-copy .eyebrow::before { background: var(--red); }
+    .manifest-copy h2 { color: #fff; max-width: 13ch; }
+    .manifest-copy > p:not(.eyebrow) { max-width: 35rem; color: #d9e3ed; margin: 1.3rem 0 1.8rem; }
+    .text-link, .news-all {
+      display: inline-flex;
+      align-items: center;
+      gap: .65rem;
+      font: 700 .82rem var(--f-display);
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+    .text-link { color: #fff; }
+    .text-link span, .news-all span { color: var(--red); font-size: 1.2rem; transition: transform .18s ease; }
+    .text-link:hover span, .news-all:hover span { transform: translateX(4px); }
+
+    .news-head { display: flex; align-items: end; justify-content: space-between; gap: 2rem; margin-bottom: 2.5rem; }
+    .news-all { padding-bottom: .35rem; color: var(--blue); }
+    .news-grid { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); }
+
+    .join {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3rem;
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .join h2 { max-width: 16ch; font-size: var(--step-2); }
+    .join p:last-child { margin: .75rem 0 0; color: var(--muted); }
+
+    @media (max-width: 760px) {
+      .section-heading, .manifest-grid { grid-template-columns: 1fr; }
+      .section-heading { gap: 1.25rem; }
+      .how { grid-template-columns: 1fr; }
+      .how-item { min-height: 0; }
+      .how-item h3 { margin-top: 2rem; }
+      .manifest-mark { min-height: 14rem; max-width: 24rem; width: 100%; justify-self: center; }
+      .news-head, .join { align-items: flex-start; flex-direction: column; }
+    }
   </style>
 </BaseLayout>
