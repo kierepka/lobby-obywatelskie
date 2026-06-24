@@ -1,171 +1,328 @@
 ---
-import { url } from '../lib/site';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const pillars = [
+const dna = [
+  'pełna autonomia',
+  'synergia społeczności',
+  'niezależna przedsiębiorczość',
+  'rozwój technologii',
+  'równość oparta o demokrację bezpośrednią',
+  'dobrowolność i odpowiedzialność',
+];
+
+const values = [
   {
-    number: '01',
-    title: 'Wspólnie decydujemy',
-    text: 'Każdy członek ma jeden, równie ważny głos. Najważniejsze decyzje podejmujemy po otwartej dyskusji.',
+    title: 'Wolność i zaufanie',
+    text: 'jako podstawa relacji.',
   },
   {
-    number: '02',
-    title: 'Wspólnie tworzymy',
-    text: 'Łączymy pomysły, umiejętności i pracę, aby uruchamiać społeczne oraz gospodarcze inicjatywy.',
+    title: 'Równość i koleżeństwo',
+    text: 'bo każdy głos jest tak samo ważny.',
   },
   {
-    number: '03',
-    title: 'Wspólnie korzystamy',
-    text: 'Wartość wypracowana przez grupę ma wzmacniać jej członków, niezależność wspólnoty i kolejne projekty.',
+    title: 'Transparentność',
+    text: 'w każdym działaniu.',
   },
   {
-    number: '04',
-    title: 'Wspólnie odpowiadamy',
-    text: 'Wolność łączymy z odpowiedzialnością. Decyzja daje wpływ, ale oznacza również udział w jej skutkach.',
+    title: 'Honor i Odwagę',
+    text: 'by podejmować wyzwania i stać na straży naszych wartości.',
   },
 ];
 
-const rules = [
-  ['Równość', 'Status, majątek i rozpoznawalność nie dają dodatkowego głosu.'],
-  ['Transparentność', 'Zasady, decyzje i sposób wykorzystania wspólnych zasobów muszą być zrozumiałe.'],
-  ['Dobrowolność', 'Nikt nie jest zmuszany do udziału w projekcie, pracy ani finansowaniu inicjatywy.'],
-  ['Autonomia', 'Działamy oddolnie i pozostajemy niezależni od partii oraz zewnętrznych ośrodków władzy.'],
-  ['Przedsiębiorczość', 'Nie ograniczamy się do postulatów. Tworzymy rozwiązania, usługi i przedsięwzięcia.'],
-  ['Wzajemne wsparcie', 'Wiedza, kontakty i doświadczenie członków mają służyć rozwojowi całej wspólnoty.'],
+const strategy = [
+  {
+    number: '01',
+    title: 'Inicjatywa',
+    text: 'Każdy pomysł jest mile widziany, bo to on nas napędza.',
+  },
+  {
+    number: '02',
+    title: 'Demokracja bezpośrednia',
+    text: 'Wspólnie podejmujemy decyzje i wspólnie za nie odpowiadaMY.',
+  },
+  {
+    number: '03',
+    title: 'Wzajemne wsparcie',
+    text: 'TworzyMY społeczność, w której się wspieraMY.',
+  },
 ];
 ---
 <BaseLayout
   title="Manifest — Lobby Obywatelskie"
-  description="Manifest Lobby Obywatelskie — wspólne decyzje, inicjatywy i odpowiedzialność."
+  description="Manifest Lobby Obywatelskie — razem decydujemy, razem tworzymy."
 >
   <header class="manifest-hero">
-    <div class="container manifest-hero-grid">
-      <div>
-        <p class="eyebrow">Manifest Lobby Obywatelskiego</p>
-        <h1>Decydujemy.<br />Tworzymy.<br /><span>Odpowiadamy.</span></h1>
+    <div class="container hero-grid">
+      <div class="hero-title">
+        <p class="eyebrow">Manifest</p>
+        <p class="organization">Lobby Obywatelskie</p>
+        <h1>razem decydujemy,<br /><span>razem tworzymy</span></h1>
       </div>
-      <div class="manifest-intro">
-        <p>
-          Nie jesteśmy kolejną grupą czekającą na decyzje polityków.
-          Budujemy wspólnotę, która sama rozstrzyga swoje sprawy i przekłada
-          pomysły na konkretne działanie.
-        </p>
-        <strong>Jedna osoba. Jeden głos. Wspólna praca.</strong>
+      <div class="hero-statement">
+        <p class="lead">Ruch społeczny działający na rzecz dobra wspólnego.</p>
+        <div class="foundations">
+          <p><span aria-hidden="true">01</span> Fundamentem jest determinacja w działaniu.</p>
+          <p><span aria-hidden="true">02</span> Niezależność umożliwia tworzenie inicjatyw oddolnych.</p>
+        </div>
       </div>
     </div>
   </header>
 
-  <section class="container pillars-section">
-    <div class="section-title">
-      <p class="eyebrow">Cztery filary</p>
-      <h2>Na czym opieramy wspólnotę.</h2>
+  <section class="container commitment">
+    <div class="section-label" aria-hidden="true"><span>01</span></div>
+    <div class="commitment-copy">
+      <p class="statement">
+        Mamy dość pustych słów, pozorowanych działań i czekania, aż ktoś za nas
+        zmieni świat. Jesteśmy ruchem ludzi czynu. Bierzemy sprawy w swoje ręce,
+        bo wiemy, że zmiana zaczyna się od nas. Od pracy u podstaw. Od wspólnego
+        działania.
+      </p>
+      <strong>To nie jest deklaracja. To jest zobowiązanie.</strong>
     </div>
-    <div class="pillars">
-      {pillars.map((pillar) => (
+  </section>
+
+  <section class="dna-section">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <h2>Kim Jesteśmy: Nasze DNA</h2>
+        </div>
+        <p>
+          Jesteśmy neutralni politycznie i działamy oddolnie. Nie interesują
+          nas partyjne spory, lecz skuteczność w działaniu. Naszą siłą jest:
+        </p>
+      </div>
+      <div class="dna-grid">
+        {dna.map((item, index) => (
+          <article>
+            <span aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+            <h3>{item}</h3>
+          </article>
+        ))}
+      </div>
+      <p class="dna-summary">Są to fundamenty naszej współpracy.</p>
+    </div>
+  </section>
+
+  <section class="container values-section">
+    <div class="section-heading">
+      <div>
+        <h2>Wierzymy w:</h2>
+      </div>
+    </div>
+    <div class="values-grid">
+      {values.map((value, index) => (
         <article>
-          <span>{pillar.number}</span>
-          <h3>{pillar.title}</h3>
-          <p>{pillar.text}</p>
+          <span class="value-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+          <div>
+            <h3>{value.title}</h3>
+            <p>{value.text}</p>
+          </div>
         </article>
       ))}
     </div>
   </section>
 
-  <section class="economy-manifest">
-    <div class="container economy-manifest-grid">
-      <div>
-        <p class="eyebrow">Od idei do niezależności</p>
-        <h2>Demokracja ma również wymiar gospodarczy.</h2>
-      </div>
-      <div>
+  <section class="strategy-section">
+    <div class="container strategy-grid">
+      <div class="strategy-intro">
+        <h2>Jak Działamy: Nasza Strategia</h2>
         <p>
-          Chcemy tworzyć wspólne inicjatywy gospodarcze budujące kapitał,
-          kompetencje i dobrobyt członków. Ich podstawą nie jest obietnica
-          łatwego zysku, lecz własna praca, odważne pomysły i uczciwie
-          uzgodnione zasady współpracy.
+          Skupiamy się na działaniu. Jesteśmy pracowici, konsekwentni
+          i skuteczni.
         </p>
-        <p>
-          Wspólnota ma pomagać uruchamiać projekty, których pojedyncza osoba
-          nie byłaby w stanie zrealizować sama.
-        </p>
+        <p>Naszą strategią jest:</p>
       </div>
+      <ol class="strategy-list">
+        {strategy.map((item) => (
+          <li>
+            <span aria-hidden="true">{item.number}</span>
+            <div>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
     </div>
   </section>
 
-  <section class="container rules-section">
-    <div class="section-title">
-      <p class="eyebrow">Zasady działania</p>
-      <h2>Prosto i bez drobnego druku.</h2>
+  <section class="container destination">
+    <div class="destination-copy">
+      <h2>Dokąd Zmierzamy: Nasz Cel</h2>
+      <p>
+        Naszym celem jest tworzenie zaangażowanej wspólnoty mającej wpływ na
+        rozwój gospodarczy, poprzez zrzeszanie się wokół inicjatyw.
+      </p>
+      <p>
+        Wnieś swoje pasje, pomysły i energię. Zamiast szukać tego co nas dzieli,
+        znajdź to co nas łączy.
+      </p>
+      <strong>Razem dokonamy zmian. Razem MożeMy</strong>
     </div>
-    <dl class="rules">
-      {rules.map(([title, text], index) => (
-        <div>
-          <span>{String(index + 1).padStart(2, '0')}</span>
-          <dt>{title}</dt>
-          <dd>{text}</dd>
-        </div>
-      ))}
-    </dl>
-  </section>
-
-  <section class="container manifest-cta">
-    <div>
-      <p class="eyebrow">Twój następny krok</p>
-      <h2>Wnieś pomysł, umiejętność albo gotowość do działania.</h2>
-      <p>Nie musisz mieć stanowiska ani zaplecza. Zacznij od rozmowy z ludźmi, którzy również chcą tworzyć.</p>
+    <div class="destination-action">
+      <p>Jesteśmy Lobby Obywatelskie.</p>
+      <a
+        class="btn"
+        href="https://chat.whatsapp.com/B9u07JqguLc0AX1WZDD0xH"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Dołącz do nas
+      </a>
     </div>
-    <a class="btn" href={url('/kontakt')}>Dołącz do nas</a>
   </section>
 
   <style>
     .manifest-hero {
       margin: 0;
-      padding: clamp(4rem, 9vw, 7rem) 0;
+      padding: clamp(4rem, 9vw, 7.5rem) 0;
       border-bottom: 1px solid var(--line);
-      background: linear-gradient(135deg, #fff, var(--paper-2));
+      background:
+        radial-gradient(circle at 85% 20%, rgba(21,59,104,.09), transparent 25rem),
+        linear-gradient(135deg, #fff, var(--paper-2));
     }
-    .manifest-hero-grid {
+    .hero-grid {
       display: grid;
       grid-template-columns: 1.1fr .9fr;
       gap: clamp(3rem, 8vw, 7rem);
       align-items: end;
     }
-    .manifest-hero h1 { margin: 0; font-size: var(--step-4); line-height: .94; }
-    .manifest-hero h1 span { color: var(--red); }
-    .manifest-intro { padding-left: 2rem; border-left: 3px solid var(--red); }
-    .manifest-intro p { margin: 0 0 1.25rem; color: #465667; font-size: var(--step-1); }
-    .manifest-intro strong { font: 700 .75rem var(--f-display); letter-spacing: .08em; text-transform: uppercase; color: var(--blue); }
-    .section-title { display: grid; grid-template-columns: .7fr 1.3fr; gap: 2rem; align-items: end; margin-bottom: 2.5rem; }
-    .section-title h2 { max-width: 15ch; margin: 0; font-size: var(--step-3); }
-    .pillars { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 2px solid var(--ink); }
-    .pillars article { min-height: 15rem; padding: 1.5rem; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-    .pillars article:nth-child(2n) { border-right: 0; }
-    .pillars span { color: var(--red); font: 700 .7rem var(--f-display); letter-spacing: .08em; }
-    .pillars h3 { margin: 3rem 0 .7rem; font-size: var(--step-2); }
-    .pillars p { max-width: 31rem; margin: 0; color: var(--muted); }
-    .economy-manifest { padding: clamp(4rem, 8vw, 7rem) 0; background: var(--blue); color: #fff; }
-    .economy-manifest-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(3rem, 8vw, 7rem); }
-    .economy-manifest .eyebrow, .economy-manifest h2 { color: #fff; }
-    .economy-manifest h2 { max-width: 13ch; margin: 0; font-size: var(--step-3); }
-    .economy-manifest-grid > div:last-child { padding-left: 2rem; border-left: 1px solid #597491; }
-    .economy-manifest-grid > div:last-child p { margin: 0 0 1rem; color: #d7e1ea; font-size: 1.05rem; }
-    .rules { margin: 0; border-top: 2px solid var(--ink); }
-    .rules > div { display: grid; grid-template-columns: 3rem 12rem 1fr; gap: 1rem; padding: 1.2rem 0; border-bottom: 1px solid var(--line); }
-    .rules span { color: var(--red); font: 700 .68rem var(--f-display); }
-    .rules dt { font: 700 1rem var(--f-display); }
-    .rules dd { margin: 0; color: var(--muted); }
-    .manifest-cta { display: flex; align-items: center; justify-content: space-between; gap: 3rem; padding-top: 3rem; padding-bottom: 3rem; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-    .manifest-cta h2 { max-width: 18ch; margin: 0; font-size: var(--step-2); }
-    .manifest-cta p:last-child { max-width: 39rem; margin: .8rem 0 0; color: var(--muted); }
+    .organization {
+      margin: 0 0 1.4rem;
+      color: var(--blue);
+      font: 700 .8rem var(--f-display);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .hero-title h1 { max-width: 12ch; margin: 0; font-size: var(--step-4); line-height: .94; }
+    .hero-title h1 span { color: var(--red); }
+    .hero-statement { padding-left: 2rem; border-left: 3px solid var(--red); }
+    .lead { margin: 0 0 1.5rem; color: var(--ink); font-size: var(--step-1); }
+    .foundations { border-top: 1px solid var(--line); }
+    .foundations p {
+      display: grid;
+      grid-template-columns: 2rem 1fr;
+      gap: .7rem;
+      margin: 0;
+      padding: .75rem 0;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .9rem;
+    }
+    .foundations span { color: var(--red); font: 700 .65rem var(--f-display); }
+
+    .commitment {
+      display: grid;
+      grid-template-columns: .6fr 1.4fr;
+      gap: clamp(2rem, 7vw, 6rem);
+      align-items: start;
+    }
+    .section-label { display: flex; align-items: center; gap: .8rem; font: 700 .7rem var(--f-display); letter-spacing: .08em; text-transform: uppercase; }
+    .section-label span { color: var(--red); }
+    .section-label p { margin: 0; }
+    .commitment-copy { max-width: 48rem; }
+    .commitment-copy .statement { margin-top: 0; color: var(--ink); font: 700 var(--step-2)/1.25 var(--f-display); letter-spacing: -.025em; }
+    .commitment-copy > p:not(.statement) { color: var(--muted); font-size: 1.08rem; }
+    .commitment-copy strong {
+      display: inline-block;
+      margin-top: 1.2rem;
+      padding: .75rem 1rem;
+      border-left: 4px solid var(--red);
+      background: var(--paper-2);
+      font: 700 .85rem var(--f-display);
+      text-transform: uppercase;
+      letter-spacing: .055em;
+    }
+
+    .dna-section {
+      padding: clamp(4.5rem, 9vw, 8rem) 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .section-heading {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: end;
+      margin-bottom: 2.5rem;
+    }
+    .section-heading h2 { max-width: 14ch; margin: 0; font-size: var(--step-3); }
+    .section-heading > p { max-width: 38rem; margin: 0; color: var(--muted); }
+    .dna-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 2px solid var(--ink); }
+    .dna-grid article {
+      min-height: 11rem;
+      padding: 1.35rem;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .dna-grid article:nth-child(3n) { border-right: 0; }
+    .dna-grid span { color: var(--red); font: 700 .65rem var(--f-display); }
+    .dna-grid h3 { max-width: 15ch; margin: 2.8rem 0 0; font-size: 1.2rem; }
+    .dna-summary { margin: 1.2rem 0 0; color: var(--muted); }
+
+    .values-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .values-grid article {
+      display: grid;
+      grid-template-columns: 2.5rem 1fr;
+      gap: 1rem;
+      min-height: 10rem;
+      padding: 1.5rem;
+      border: 1px solid var(--line);
+      border-radius: .75rem;
+      background: rgba(255,255,255,.8);
+    }
+    .value-number { color: var(--red); font: 700 .65rem var(--f-display); }
+    .values-grid h3 { margin: 0 0 .5rem; font-size: var(--step-1); }
+    .values-grid p { margin: 0; color: var(--muted); }
+
+    .strategy-section { padding: clamp(4.5rem, 9vw, 8rem) 0; background: var(--blue); color: #fff; }
+    .strategy-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(3rem, 8vw, 7rem); }
+    .strategy-section .eyebrow, .strategy-section h2, .strategy-section h3 { color: #fff; }
+    .strategy-intro h2 { margin: 0 0 1.2rem; font-size: var(--step-3); }
+    .strategy-intro > p:last-child { max-width: 26rem; color: #cbd8e4; }
+    .strategy-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid #58738f; }
+    .strategy-list li {
+      display: grid;
+      grid-template-columns: 3rem 1fr;
+      gap: 1rem;
+      padding: 1.3rem 0;
+      border-bottom: 1px solid #58738f;
+    }
+    .strategy-list li > span { color: #f06874; font: 700 .68rem var(--f-display); }
+    .strategy-list h3 { margin: 0 0 .35rem; font-size: 1.15rem; }
+    .strategy-list p { margin: 0; color: #cbd8e4; }
+
+    .destination {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: clamp(3rem, 8vw, 7rem);
+      align-items: end;
+      padding-top: clamp(4rem, 8vw, 6rem);
+      padding-bottom: clamp(4rem, 8vw, 6rem);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .destination h2 { max-width: 20ch; margin: 0; font-size: var(--step-3); }
+    .destination-copy > p:not(.eyebrow) { max-width: 45rem; margin: 1.2rem 0; color: var(--muted); }
+    .destination-copy strong { font: 700 1rem var(--f-display); color: var(--red); }
+    .destination-action { padding: 1.5rem; border: 1px solid var(--line); border-radius: .8rem; background: #fff; box-shadow: var(--shadow-sm); }
+    .destination-action p { margin: 0 0 1rem; font: 700 1.1rem var(--f-display); }
+
     @media (max-width: 760px) {
-      .manifest-hero-grid, .section-title, .economy-manifest-grid { grid-template-columns: 1fr; }
-      .manifest-intro, .economy-manifest-grid > div:last-child { padding-left: 1.2rem; }
-      .pillars { grid-template-columns: 1fr; }
-      .pillars article { min-height: 0; border-right: 0; }
-      .pillars h3 { margin-top: 2rem; }
-      .rules > div { grid-template-columns: 2.5rem 1fr; }
-      .rules dd { grid-column: 2; }
-      .manifest-cta { align-items: flex-start; flex-direction: column; }
+      .hero-grid, .commitment, .section-heading, .strategy-grid, .destination { grid-template-columns: 1fr; }
+      .hero-statement { padding-left: 1.2rem; }
+      .commitment { gap: 1.5rem; }
+      .dna-grid { grid-template-columns: 1fr 1fr; }
+      .dna-grid article:nth-child(3n) { border-right: 1px solid var(--line); }
+      .dna-grid article:nth-child(2n) { border-right: 0; }
+      .values-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .dna-grid { grid-template-columns: 1fr; }
+      .dna-grid article { min-height: 0; border-right: 0 !important; }
+      .dna-grid h3 { margin-top: 1.8rem; }
     }
   </style>
 </BaseLayout>
