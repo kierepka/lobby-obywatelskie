@@ -5,23 +5,27 @@ const links = [
   { href: '/aktualnosci', label: 'Aktualności' },
   { href: '/kontakt', label: 'Kontakt' },
 ];
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isActive = (href: string) =>
+  href === '/' ? path === '/' : path === href || path.startsWith(href + '/');
 ---
 <header class="site-header">
   <div class="container header-inner">
-    <a href="/" class="logo">
-      <span class="logo-mark" aria-hidden="true">✕</span>
-      <span class="logo-text">Lobby&nbsp;Obywatelskie</span>
+    <a href="/" class="logo" aria-label="Lobby Obywatelskie — strona główna">
+      <img src="/img/logo.png" alt="Lobby Obywatelskie" width="1189" height="343" />
     </a>
-    <button class="nav-toggle" aria-label="Menu" aria-expanded="false">Menu</button>
-    <nav class="nav" aria-label="Główna">
-      {links.map((l) => <a href={l.href}>{l.label}</a>)}
+    <button class="nav-toggle" aria-label="Otwórz menu" aria-expanded="false" aria-controls="main-nav">Menu</button>
+    <nav id="main-nav" class="nav" aria-label="Główna nawigacja">
+      {links.map((l) => (
+        <a href={l.href} aria-current={isActive(l.href) ? 'page' : undefined}>{l.label}</a>
+      ))}
     </nav>
   </div>
 </header>
 <style>
   .site-header {
-    border-bottom: 1px solid var(--line);
-    background: var(--paper);
+    background: var(--ink);
+    border-bottom: 3px solid var(--red);
     position: sticky;
     top: 0;
     z-index: 20;
@@ -30,45 +34,23 @@ const links = [
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem 1.5rem;
+    padding: 0.85rem 1.5rem;
   }
-  .logo {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    text-decoration: none;
-    color: var(--ink);
-  }
-  .logo-mark {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 1.7rem;
-    height: 1.7rem;
-    border: 2px solid var(--ink);
-    border-radius: 2px;
-    color: var(--red);
-    font-weight: 800;
-    font-size: 0.95rem;
-  }
-  .logo-text {
-    font-family: var(--f-display);
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    font-size: 1.1rem;
-  }
+  .logo { display: inline-flex; align-items: center; }
+  .logo img { height: 2.1rem; width: auto; display: block; }
   .nav { display: flex; gap: 1.75rem; }
   .nav a {
     font-family: var(--f-mono);
     font-size: 0.8rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--ink);
+    color: #f3f1ea;
     text-decoration: none;
-    padding: 0.2rem 0;
+    padding: 0.25rem 0;
     border-bottom: 2px solid transparent;
   }
   .nav a:hover { border-color: var(--red); }
+  .nav a[aria-current="page"] { border-color: var(--red); color: #fff; }
   .nav-toggle {
     display: none;
     font-family: var(--f-mono);
@@ -76,10 +58,10 @@ const links = [
     letter-spacing: 0.14em;
     text-transform: uppercase;
     background: none;
-    border: 1px solid var(--line);
+    border: 1px solid #4a4c52;
     border-radius: 2px;
-    color: var(--ink);
-    padding: 0.4rem 0.7rem;
+    color: #f3f1ea;
+    padding: 0.45rem 0.8rem;
     cursor: pointer;
   }
   @media (max-width: 640px) {
@@ -101,5 +83,6 @@ const links = [
   btn?.addEventListener('click', () => {
     const open = nav?.classList.toggle('open');
     btn.setAttribute('aria-expanded', String(!!open));
+    btn.setAttribute('aria-label', open ? 'Zamknij menu' : 'Otwórz menu');
   });
 </script>

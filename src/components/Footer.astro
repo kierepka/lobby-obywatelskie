@@ -1,46 +1,89 @@
 ---
 const year = new Date().getFullYear();
+const social = [
+  { href: 'https://www.youtube.com/@LobbyObywatelskie', label: 'YouTube' },
+  { href: 'https://chat.whatsapp.com/B9u07JqguLc0AX1WZDD0xH', label: 'WhatsApp' },
+];
+const legal = [
+  { href: '/manifest', label: 'Manifest' },
+  { href: '/kontakt', label: 'Kontakt' },
+  { href: '/polityka-prywatnosci', label: 'Polityka prywatności' },
+  { href: '/deklaracja-dostepnosci', label: 'Deklaracja dostępności' },
+];
 ---
 <footer class="site-footer">
   <div class="container footer-grid">
-    <div>
-      <p class="footer-brand"><span aria-hidden="true">✕</span> Lobby Obywatelskie</p>
-      <p class="footer-tag">Razem możemy więcej.</p>
+    <div class="footer-brand-col">
+      <img class="footer-logo" src="/img/logo.png" alt="Lobby Obywatelskie" width="1189" height="343" />
+      <p class="footer-tag">Razem decydujeMy, razem tworzyMy.</p>
+      <a class="btn footer-cta" href="/kontakt">Dołącz do nas</a>
     </div>
-    <div class="footer-meta">
-      <p><a href="mailto:kontakt@lobbyobywatelskie.pl">kontakt@lobbyobywatelskie.pl</a></p>
-      <p>Spotkania: środy, 21:00</p>
-      <p class="footer-copy">&copy; {year} Lobby Obywatelskie</p>
-    </div>
+
+    <nav class="footer-nav" aria-label="Stopka">
+      <p class="footer-h">Strona</p>
+      <ul>
+        {legal.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+      </ul>
+    </nav>
+
+    <nav class="footer-nav" aria-label="Społeczności">
+      <p class="footer-h">Dołącz</p>
+      <ul>
+        {social.map((s) => (
+          <li><a href={s.href} target="_blank" rel="noopener noreferrer">{s.label} ↗</a></li>
+        ))}
+        <li><a href="mailto:kontakt@lobbyobywatelskie.pl">E-mail</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="container footer-bottom">
+    <p>&copy; {year} Lobby Obywatelskie</p>
+    <p>Spotkania: środy, 21:00</p>
   </div>
 </footer>
 <style>
   .site-footer {
     background: var(--ink);
     color: var(--paper);
-    padding: 3rem 0;
+    padding: 3rem 0 2rem;
     margin-top: clamp(3rem, 8vw, 6rem);
+    border-top: 3px solid var(--red);
   }
   .footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+  .footer-logo { height: 2.4rem; width: auto; display: block; margin-bottom: 0.9rem; }
+  .footer-tag { color: #b8b8ad; margin: 0 0 1.25rem; max-width: 22rem; }
+  .footer-cta { padding: 0.6rem 1.2rem; }
+  .footer-h {
+    font-family: var(--f-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #8a8a80;
+    margin: 0 0 0.9rem;
+  }
+  .footer-nav ul { list-style: none; padding: 0; margin: 0; line-height: 2.1; }
+  .site-footer a { color: var(--paper); text-decoration: none; }
+  .footer-nav a:hover { text-decoration: underline; }
+  .footer-bottom {
     display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
     justify-content: space-between;
-    align-items: flex-start;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #33353b;
+    font-family: var(--f-mono);
+    font-size: 0.8rem;
+    color: #8a8a80;
   }
-  .footer-brand {
-    font-family: var(--f-display);
-    font-weight: 800;
-    font-size: 1.2rem;
-    margin: 0;
-  }
-  .footer-brand span { color: var(--red); }
-  .footer-tag { color: #b8b8ad; margin: 0.25rem 0 0; }
-  .footer-meta { font-family: var(--f-mono); font-size: 0.85rem; line-height: 1.9; text-align: right; }
-  .footer-meta p { margin: 0; }
-  .site-footer a { color: var(--paper); text-decoration: underline; }
-  .footer-copy { color: #8a8a80; margin-top: 0.5rem; }
-  @media (max-width: 560px) {
-    .footer-meta { text-align: left; }
+  .footer-bottom p { margin: 0; }
+  @media (max-width: 700px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .footer-brand-col { grid-column: 1 / -1; }
   }
 </style>

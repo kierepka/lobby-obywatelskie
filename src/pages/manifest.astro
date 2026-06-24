@@ -1,48 +1,65 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const zasady = [
-  'Wszystkie reguły ustalane są w demokratycznym głosowaniu.',
-  'Jedna osoba — jeden równy głos.',
-  'Decyzje zapadają zwykłą większością.',
+const dna = [
+  'Pełna autonomia',
+  'Synergia społeczności',
+  'Niezależna przedsiębiorczość',
+  'Rozwój technologii',
+  'Równość oparta o demokrację bezpośrednią',
+  'Dobrowolność i odpowiedzialność',
 ];
-const czlonkostwo = [
-  'Nowy członek dołącza z rekomendacją 4 obecnych członków.',
-  'Roczna składka wynosi 12 zł i jest ustalana wspólnie.',
+const wierzymy = [
+  { t: 'Wolność i zaufanie', o: 'jako podstawa relacji.' },
+  { t: 'Równość i koleżeństwo', o: 'bo każdy głos jest tak samo ważny.' },
+  { t: 'Transparentność', o: 'w każdym działaniu.' },
+  { t: 'Honor i odwaga', o: 'by podejmować wyzwania i stać na straży wartości.' },
 ];
-const procedura = [
-  { krok: '01', tytul: 'Inicjatywa', opis: 'Trzy podpisy rozpoczynają proces.' },
-  { krok: '02', tytul: 'Zbiórka podpisów', opis: '90 dni na zebranie poparcia.' },
-  { krok: '03', tytul: 'Dyskusja', opis: '7 dni otwartej debaty.' },
-  { krok: '04', tytul: 'Referendum', opis: '3 dni tajnego głosowania z weryfikacją.' },
+const strategia = [
+  { krok: '01', tytul: 'Inicjatywa', opis: 'Każdy pomysł jest mile widziany, bo to on nas napędza.' },
+  { krok: '02', tytul: 'Demokracja bezpośrednia', opis: 'Wspólnie podejmujemy decyzje i wspólnie za nie odpowiadamy.' },
+  { krok: '03', tytul: 'Wzajemne wsparcie', opis: 'Tworzymy społeczność, w której się wspieramy.' },
 ];
 ---
-<BaseLayout title="Manifest — Lobby Obywatelskie">
+<BaseLayout
+  title="Manifest — Lobby Obywatelskie"
+  description="Manifest Lobby Obywatelskie — neutralny politycznie, oddolny ruch społeczny na rzecz dobra wspólnego."
+>
   <header class="page-hero container">
     <p class="eyebrow">Manifest</p>
-    <h1>To obywatele mają<br />ostatni głos.</h1>
-    <p class="lede">Działamy razem, bo razem możemy więcej. Oto zasady, na których stoimy.</p>
+    <h1>Razem decydujeMy,<br />razem tworzyMy.</h1>
+    <p class="lede">
+      Ruch społeczny działający na rzecz dobra wspólnego. Mamy dość pustych słów
+      i czekania, aż ktoś za nas zmieni świat. Bierzemy sprawy w swoje ręce — bo
+      zmiana zaczyna się od nas. To nie deklaracja. To zobowiązanie.
+    </p>
   </header>
 
-  <section class="container two-col">
-    <div>
-      <h2>Zasady działania</h2>
-      <ul class="tick-list">
-        {zasady.map((z) => <li><span class="tick">✕</span> {z}</li>)}
-      </ul>
-    </div>
-    <div>
-      <h2>Członkostwo</h2>
-      <ul class="tick-list">
-        {czlonkostwo.map((c) => <li><span class="tick">✕</span> {c}</li>)}
-      </ul>
-    </div>
+  <section class="container">
+    <p class="eyebrow">Kim jesteśmy — nasze DNA</p>
+    <p class="intro">Jesteśmy neutralni politycznie i działamy oddolnie. Nie interesują nas
+    partyjne spory, lecz skuteczność w działaniu. Naszą siłą jest:</p>
+    <ul class="tick-list grid-2">
+      {dna.map((d) => <li><span class="tick">✕</span> {d}</li>)}
+    </ul>
   </section>
 
   <section class="container">
-    <p class="eyebrow">Procedura głosowań</p>
+    <p class="eyebrow">Wierzymy w</p>
+    <dl class="beliefs">
+      {wierzymy.map((w) => (
+        <div>
+          <dt>{w.t}</dt>
+          <dd>{w.o}</dd>
+        </div>
+      ))}
+    </dl>
+  </section>
+
+  <section class="container">
+    <p class="eyebrow">Jak działamy — nasza strategia</p>
     <ol class="proc">
-      {procedura.map((p) => (
+      {strategia.map((p) => (
         <li>
           <span class="proc-num">{p.krok}</span>
           <div>
@@ -52,27 +69,43 @@ const procedura = [
         </li>
       ))}
     </ol>
-    <p class="note">Pełny tekst Manifestu uzupełnimy treścią z obecnej strony.</p>
+  </section>
+
+  <section class="container goal">
+    <p class="eyebrow">Dokąd zmierzamy</p>
+    <h2>Tworzymy zaangażowaną wspólnotę mającą wpływ na rozwój gospodarczy.</h2>
+    <p class="intro">Wnieś swoje pasje, pomysły i energię. Zamiast szukać tego, co nas
+    dzieli, znajdź to, co nas łączy. Razem dokonamy zmian.</p>
+    <a class="btn" href="/kontakt">Dołącz do nas</a>
   </section>
 
   <style>
-    .page-hero { padding: clamp(2.5rem, 6vw, 4rem) 1.5rem; border-bottom: 1px solid var(--line); margin-bottom: 0; }
+    .page-hero { padding: clamp(2.5rem, 6vw, 4rem) 1.5rem; border-bottom: 1px solid var(--line); }
     .page-hero h1 { font-size: var(--step-3); margin: 0 0 1rem; }
-    .page-hero .lede { font-size: var(--step-1); max-width: 36rem; color: #34373d; margin: 0; }
+    .page-hero .lede, .intro { max-width: 42rem; color: #34373d; }
+    .page-hero .lede { font-size: var(--step-1); margin: 0; }
+    .intro { margin: 0 0 1.5rem; }
 
-    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
-    .two-col h2 { font-size: var(--step-2); margin: 0 0 1rem; }
     .tick-list { list-style: none; padding: 0; margin: 0; }
     .tick-list li { display: flex; gap: 0.9rem; align-items: flex-start; padding: 0.7rem 0; border-bottom: 1px dashed var(--line); }
     .tick-list .tick { font-size: 0.8em; margin-top: 0.15em; }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; column-gap: 2.5rem; }
 
-    .proc { list-style: none; padding: 0; margin: 1.5rem 0 0; counter-reset: none; }
+    .beliefs { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 0; }
+    .beliefs dt { font-family: var(--f-display); font-weight: 800; font-size: var(--step-1); color: var(--ink); }
+    .beliefs dd { margin: 0.25rem 0 0; color: #34373d; }
+
+    .proc { list-style: none; padding: 0; margin: 0; }
     .proc li { display: flex; gap: 1.25rem; align-items: baseline; padding: 1.25rem 0; border-top: 1px solid var(--ink); }
     .proc-num { font-family: var(--f-mono); font-weight: 500; color: var(--red); font-size: var(--step-1); flex: 0 0 auto; }
     .proc h3 { font-size: var(--step-1); margin: 0 0 0.25rem; }
     .proc p { margin: 0; color: #34373d; }
-    .note { color: var(--muted); font-style: italic; margin-top: 2rem; }
 
-    @media (max-width: 700px) { .two-col { grid-template-columns: 1fr; gap: 1.5rem; } }
+    .goal h2 { font-size: var(--step-2); max-width: 38rem; margin: 0 0 1rem; }
+
+    @media (max-width: 640px) {
+      .grid-2, .beliefs { grid-template-columns: 1fr; }
+      .beliefs { gap: 1.25rem; }
+    }
   </style>
 </BaseLayout>

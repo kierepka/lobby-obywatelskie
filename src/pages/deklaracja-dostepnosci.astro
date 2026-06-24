@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const updated = '24 czerwca 2026';
+---
+<BaseLayout
+  title="Deklaracja dostępności — Lobby Obywatelskie"
+  description="Deklaracja dostępności cyfrowej strony Lobby Obywatelskie. Dążymy do zgodności z WCAG 2.1 na poziomie AA."
+>
+  <article class="doc container">
+    <p class="eyebrow">Dostępność</p>
+    <h1>Deklaracja dostępności</h1>
+    <p class="updated">Ostatnia aktualizacja: {updated}</p>
+
+    <p>Lobby Obywatelskie dokłada starań, aby strona była dostępna dla wszystkich
+    użytkowników, zgodnie z wytycznymi <strong>WCAG 2.1 na poziomie AA</strong>
+    oraz duchem europejskich regulacji dotyczących dostępności cyfrowej.</p>
+
+    <h2>Stan zgodności</h2>
+    <p>Strona jest <strong>w większości zgodna</strong> z WCAG 2.1 AA. Ocena została
+    przeprowadzona samodzielnie przez zespół.</p>
+
+    <h2>Udogodnienia</h2>
+    <ul>
+      <li>Łącze „Przejdź do treści” na początku każdej strony.</li>
+      <li>Semantyczna struktura nagłówków i punktów orientacyjnych (landmarks).</li>
+      <li>Widoczny wskaźnik fokusu przy nawigacji klawiaturą.</li>
+      <li>Kontrast tekstu spełniający wymagania poziomu AA.</li>
+      <li>Pełna obsługa na urządzeniach mobilnych.</li>
+      <li>Poszanowanie ustawienia „ograniczony ruch” (prefers-reduced-motion).</li>
+      <li>Teksty alternatywne dla grafik niosących treść.</li>
+    </ul>
+
+    <h2>Zgłaszanie problemów</h2>
+    <p>Jeśli napotkasz barierę w dostępności, napisz do nas:
+    <a href="mailto:administracja@lobbyobywatelskie.pl">administracja@lobbyobywatelskie.pl</a>.
+    Postaramy się usunąć problem i udostępnić informację w alternatywny sposób.</p>
+  </article>
+</BaseLayout>
