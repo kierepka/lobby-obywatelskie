@@ -30,53 +30,6 @@ const steps = [
   },
 ];
 
-const historyRecords = [
-  {
-    date: 'ok. 550',
-    kind: 'Zapis źródłowy',
-    title: 'Prokopiusz o decyzjach wczesnych Słowian',
-    text: 'W „Wojnach” opisał Sklawinów i Antów jako społeczności bez jednego władcy, odnoszące ważne sprawy do ogółu.',
-    caveat: 'Świadectwo dotyczy grup znad dolnego Dunaju, nie bezpośrednio mieszkańców ziem polskich.',
-    source: 'https://doi.org/10.1017/CBO9780511496295.008',
-    sourceLabel: 'Cambridge University Press',
-  },
-  {
-    date: '1180',
-    kind: 'Udokumentowany zjazd',
-    title: 'Zjazd w Łęczycy',
-    text: 'Kazimierz II Sprawiedliwy spotkał się z dostojnikami duchownymi i świeckimi. Zjazd przyjął postanowienia ograniczające część ciężarów prawa książęcego.',
-    caveat: 'Było to zgromadzenie elit, a nie powszechne głosowanie ludności.',
-    source: 'https://bazhum.muzhp.pl/media/texts/collectanea-theologica/1936-tom-17-numer-1-2/collectanea_theologica-r1936-t17-n1_2-s183-206.pdf',
-    sourceLabel: 'Opracowanie źródłowe',
-  },
-  {
-    date: '1505',
-    kind: 'Prawo stanowione',
-    title: 'Konstytucja Nihil novi',
-    text: 'Sejm w Radomiu utrwalił zasadę, że nowych praw nie ustanawia się bez zgody reprezentacji sejmowej.',
-    caveat: 'Był to system przedstawicielski ograniczony do stanu szlacheckiego, nie demokracja bezpośrednia.',
-    source: 'https://biblioteka.sejm.gov.pl/wp-content/uploads/2019/04/folder-PL.pdf',
-    sourceLabel: 'Biblioteka Sejmowa',
-  },
-  {
-    date: '1997',
-    kind: 'Referendum ogólnokrajowe',
-    title: 'Obywatele zatwierdzają Konstytucję RP',
-    text: '25 maja w głosowaniu ogólnokrajowym przyjęto Konstytucję uchwaloną wcześniej przez Zgromadzenie Narodowe.',
-    caveat: 'To rzeczywisty przykład bezpośredniego rozstrzygnięcia ustrojowego przez obywateli.',
-    source: 'https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU19970750476',
-    sourceLabel: 'Obwieszczenie PKW',
-  },
-  {
-    date: '2003',
-    kind: 'Wiążące referendum',
-    title: 'Decyzja o wejściu Polski do Unii Europejskiej',
-    text: '7–8 czerwca obywatele bezpośrednio zdecydowali o zgodzie na ratyfikację traktatu akcesyjnego.',
-    caveat: 'Wynik przekroczył wymagany próg frekwencji i był wiążący.',
-    source: 'https://referendum2003.pkw.gov.pl/informacje_prasowe/Obwieszczenie_o_wyniku_referendum_akcesyjnego.htm',
-    sourceLabel: 'Państwowa Komisja Wyborcza',
-  },
-];
 ---
 <BaseLayout title="Lobby Obywatelskie — Razem możemy więcej">
   <Hero />
@@ -117,7 +70,7 @@ const historyRecords = [
           aby rozwijać przedsięwzięcia budujące niezależność oraz dobrobyt grupy.
         </p>
         <a class="economy-link" href={url('/kontakt')}>
-          Wnieś swój pomysł lub umiejętność <span aria-hidden="true">→</span>
+          Dołącz do nas <span aria-hidden="true">→</span>
         </a>
       </div>
 
@@ -160,6 +113,44 @@ const historyRecords = [
     </div>
   </section>
 
+  <section class="container practice-section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Wspólnota w praktyce</p>
+        <h2>Co nas spaja na co dzień.</h2>
+      </div>
+      <p>
+        Konkretne zasady, na których opieramy wspólne działanie — od rozwoju,
+        przez składkę, po to, kim jesteśmy.
+      </p>
+    </div>
+    <div class="practice-grid">
+      <article class="practice-card">
+        <span class="practice-tag">Rozwój i współpraca</span>
+        <p>
+          Budujemy dobrobyt: intelektualny, zdrowotny i finansowy.
+          Wspieramy biznesy członków. Tworzymy wspólne przedsięwzięcia
+          i lokalne grupy.
+        </p>
+      </article>
+      <article class="practice-card">
+        <span class="practice-tag">Składka</span>
+        <p>
+          Członkowie grupy zrzucają się po 12 zł rocznie.
+          O przeznaczeniu składki decydujemy wspólnie, w głosowaniach.
+        </p>
+      </article>
+      <article class="practice-card">
+        <span class="practice-tag">Dlaczego „Lobby Obywatelskie”</span>
+        <p>
+          Nasza grupa nazywa się Lobby Obywatelskie, ponieważ działamy
+          z pozycji obywateli i na rzecz obywateli. Działamy oddolnie
+          i zachowujemy neutralność polityczną.
+        </p>
+      </article>
+    </div>
+  </section>
+
   <section class="manifest-band">
     <div class="container manifest-grid">
       <div class="manifest-mark" aria-hidden="true">
@@ -192,53 +183,6 @@ const historyRecords = [
       {posts.map((p) => (
         <NewsCard title={p.data.title} date={p.data.date} description={p.data.description} href={url(`/aktualnosci/${p.slug}`)} />
       ))}
-    </div>
-  </section>
-
-  <section class="records-section">
-    <div class="container">
-      <div class="records-head">
-        <div>
-          <p class="eyebrow">Historyczne zapisy</p>
-          <h2>Współdecydowanie — fakty, nie legenda.</h2>
-        </div>
-        <p>
-          Źródła pokazują różne formy udziału we wspólnych decyzjach.
-          Nie były one jednak tym samym: od narady plemiennej, przez zgromadzenia
-          elit i parlament, aż po współczesne referendum powszechne.
-        </p>
-      </div>
-
-      <div class="records-list">
-        {historyRecords.map((record, index) => (
-          <article class="record">
-            <div class="record-date">
-              <span>{String(index + 1).padStart(2, '0')}</span>
-              <strong>{record.date}</strong>
-            </div>
-            <div class="record-main">
-              <p class="record-kind">{record.kind}</p>
-              <h3>{record.title}</h3>
-              <p>{record.text}</p>
-            </div>
-            <div class="record-proof">
-              <p><span aria-hidden="true">i</span>{record.caveat}</p>
-              <a href={record.source} target="_blank" rel="noopener noreferrer">
-                {record.sourceLabel} <span aria-hidden="true">↗</span>
-              </a>
-            </div>
-          </article>
-        ))}
-      </div>
-
-      <aside class="records-note">
-        <strong>Co z tego wynika?</strong>
-        <p>
-          Nie ma dowodu na prostą ciągłość od słowiańskiego wiecu do dzisiejszego
-          referendum. Jest za to dobrze udokumentowana, powracająca w polskiej
-          historii zasada, że władza powinna pytać o zgodę tych, których dotyczy decyzja.
-        </p>
-      </aside>
     </div>
   </section>
 
@@ -396,95 +340,36 @@ const historyRecords = [
     .economy-principles span:last-child { border-right: 0; }
     .economy-principles b { color: #167252; margin-right: .25rem; }
 
-    .records-section {
-      padding: clamp(4.5rem, 9vw, 8rem) 0;
-      background:
-        linear-gradient(90deg, rgba(21,59,104,.035) 1px, transparent 1px),
-        linear-gradient(rgba(21,59,104,.035) 1px, transparent 1px),
-        #fff;
-      background-size: 34px 34px;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-    }
-    .records-head {
+    .practice-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(18rem, .9fr);
-      gap: 3rem;
-      align-items: end;
-      margin-bottom: 3rem;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-auto-rows: 1fr;
+      gap: 1.1rem;
     }
-    .records-head h2 { max-width: 15ch; margin: 0; font-size: var(--step-3); }
-    .records-head > p { max-width: 36rem; margin: 0; color: var(--muted); }
-    .records-list {
-      border-top: 2px solid var(--ink);
+    .practice-card {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      height: 100%;
+      padding: 1.7rem;
+      border: 1px solid var(--line);
+      border-radius: .9rem;
+      background: rgba(255,255,255,.75);
+      box-shadow: 0 10px 35px rgba(13,33,59,.045);
     }
-    .record {
-      display: grid;
-      grid-template-columns: 7rem minmax(0, 1.15fr) minmax(15rem, .85fr);
-      gap: clamp(1.25rem, 4vw, 3rem);
-      padding: 1.5rem 0;
-      border-bottom: 1px solid var(--line);
-      align-items: start;
-    }
-    .record-date { display: grid; gap: .35rem; }
-    .record-date span {
-      color: var(--red);
-      font: 700 .62rem var(--f-display);
-      letter-spacing: .1em;
-    }
-    .record-date strong {
-      font: 700 1.1rem var(--f-display);
-      color: var(--blue);
-    }
-    .record-kind {
-      margin: 0 0 .35rem !important;
-      color: var(--red) !important;
-      font: 700 .65rem var(--f-display);
-      letter-spacing: .09em;
-      text-transform: uppercase;
-    }
-    .record-main h3 { margin: 0 0 .5rem; font-size: 1.15rem; letter-spacing: -.015em; }
-    .record-main > p:last-child { margin: 0; color: #465667; font-size: .92rem; }
-    .record-proof { display: grid; gap: .8rem; }
-    .record-proof p {
-      display: grid;
-      grid-template-columns: 1.5rem 1fr;
-      gap: .55rem;
-      margin: 0;
-      color: var(--muted);
-      font-size: .76rem;
-      line-height: 1.5;
-    }
-    .record-proof p > span {
-      display: grid;
-      place-items: center;
-      width: 1.35rem;
-      height: 1.35rem;
-      border-radius: 50%;
+    .practice-card p { margin: 0; color: var(--muted); }
+    .practice-tag {
+      align-self: flex-start;
+      padding: .42rem .72rem;
+      border-radius: .5rem;
       background: var(--blue-light);
       color: var(--blue);
-      font: 700 .6rem var(--f-display);
-    }
-    .record-proof a {
-      font: 700 .65rem var(--f-display);
+      font: 700 .66rem var(--f-display);
       letter-spacing: .04em;
       text-transform: uppercase;
-      text-decoration: none;
     }
-    .record-proof a span { color: var(--red); }
-    .records-note {
-      display: grid;
-      grid-template-columns: 12rem 1fr;
-      gap: 1.5rem;
-      margin-top: 2rem;
-      padding: 1.3rem 1.5rem;
-      border: 1px solid #b9c8d5;
-      border-left: 4px solid var(--red);
-      border-radius: .6rem;
-      background: #fff;
-    }
-    .records-note strong { font: 700 .85rem var(--f-display); }
-    .records-note p { max-width: 48rem; margin: 0; color: var(--muted); font-size: .86rem; }
+    .practice-card:nth-child(2) .practice-tag { background: #fce8ec; color: var(--red); }
+    .practice-card:nth-child(3) .practice-tag { background: var(--blue); color: #fff; }
 
     .manifest-band {
       padding: clamp(4rem, 8vw, 7rem) 0;
@@ -543,15 +428,11 @@ const historyRecords = [
     .join p:last-child { margin: .75rem 0 0; color: var(--muted); }
 
     @media (max-width: 760px) {
-      .section-heading, .economy-grid, .records-head, .manifest-grid { grid-template-columns: 1fr; }
+      .section-heading, .economy-grid, .practice-grid, .manifest-grid { grid-template-columns: 1fr; }
       .section-heading { gap: 1.25rem; }
       .how { grid-template-columns: 1fr; }
       .how-item h3 { margin-top: 2rem; }
       .economy-grid { gap: 2.5rem; }
-      .records-head { gap: 1.25rem; }
-      .record { grid-template-columns: 5rem 1fr; }
-      .record-proof { grid-column: 2; }
-      .records-note { grid-template-columns: 1fr; gap: .5rem; }
       .manifest-mark { min-height: 14rem; max-width: 24rem; width: 100%; justify-self: center; }
       .news-head, .join { align-items: flex-start; flex-direction: column; }
     }
@@ -559,9 +440,6 @@ const historyRecords = [
       .economy-principles { grid-template-columns: 1fr; }
       .economy-principles span { border-right: 0; border-bottom: 1px solid var(--line); }
       .economy-principles span:last-child { border-bottom: 0; }
-      .record { grid-template-columns: 1fr; gap: .8rem; }
-      .record-date { display: flex; align-items: baseline; justify-content: space-between; }
-      .record-proof { grid-column: auto; }
     }
   </style>
 </BaseLayout>
