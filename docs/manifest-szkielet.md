@@ -3,10 +3,13 @@
 > **Dokument roboczy grupy.** Nie jest publikowany na stronie — służy do ustalenia
 > treści Manifestu wspólnie, zanim trafi na witrynę.
 >
-> **Jak korzystać:** każda sekcja = jeden panel na stronie. Pod każdą jest *po co ona
-> jest* i *pytania pomocnicze*. Wpisujcie ustalenia w polu **„Nasza treść"**.
-> Sekcje można dodawać, usuwać i zmieniać kolejność. Cel: krótko, konkretnie,
-> łatwo do czytania.
+> **Jak korzystać:** sekcje poniżej służą tylko do *uporządkowania dyskusji* — pod każdą
+> jest *po co ona jest* i *pytania pomocnicze*. Wpisujcie ustalenia w polu **„Nasza treść"**.
+> Sekcje można dodawać, usuwać i zmieniać kolejność. Cel: krótko, konkretnie, łatwo do czytania.
+>
+> **Uwaga o układzie:** na stronie Manifest ma być **jednym jednolitym, ciągłym tekstem**
+> — bez kafelków, kart i podpunktów. Te sekcje to rusztowanie do zebrania treści,
+> a nie docelowy podział wizualny.
 >
 > Treść decyduje grupa — poniższe pytania to tylko punkt wyjścia, nie gotowe odpowiedzi.
 
