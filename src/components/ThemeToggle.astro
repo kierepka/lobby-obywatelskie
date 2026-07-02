@@ -1,0 +1,62 @@
+---
+---
+<button class="theme-toggle" aria-label="Przełącz motyw" aria-pressed="false">
+  <span class="theme-icon sun-icon" aria-hidden="true">☀️</span>
+  <span class="theme-icon moon-icon" aria-hidden="true">🌙</span>
+</button>
+
+<style>
+  .theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0.7rem;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 0.45rem;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+  .theme-toggle:hover {
+    background: var(--blue-light);
+  }
+  .theme-icon {
+    font-size: 1.1rem;
+    line-height: 1;
+  }
+  .moon-icon { display: none; }
+  .theme-toggle[aria-pressed="true"] .sun-icon { display: none; }
+  .theme-toggle[aria-pressed="true"] .moon-icon { display: block; }
+</style>
+
+<script>
+  const toggle = document.querySelector('.theme-toggle');
+  const html = document.documentElement;
+
+  const setTheme = (isDark: boolean) => {
+    if (isDark) {
+      html.classList.add('dark');
+      toggle?.setAttribute('aria-pressed', 'true');
+    } else {
+      html.classList.remove('dark');
+      toggle?.setAttribute('aria-pressed', 'false');
+    }
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  };
+
+  const toggleTheme = () => {
+    const isDark = html.classList.contains('dark');
+    setTheme(!isDark);
+  };
+
+  const initTheme = () => {
+    const saved = localStorage.getItem('theme');
+    const isDark = saved ? saved === 'dark' : true;
+    setTheme(isDark);
+  };
+
+  toggle?.addEventListener('click', toggleTheme);
+  initTheme();
+</script>

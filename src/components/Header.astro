@@ -1,5 +1,6 @@
 ---
 import { url, asset } from '../lib/site';
+import ThemeToggle from './ThemeToggle.astro';
 const links = [
   { href: '/', label: 'Start' },
   { href: '/manifest', label: 'Manifest' },
@@ -20,9 +21,6 @@ const isActive = (href: string) =>
         <span class="logo-sub">Obywatelskie</span>
       </span>
     </a>
-    <button class="nav-toggle" aria-label="Otwórz menu" aria-expanded="false" aria-controls="main-nav">
-      <span></span><span></span><span></span>
-    </button>
     <nav id="main-nav" class="nav" aria-label="Główna nawigacja">
       <div class="nav-links">
         {links.map((l) => (
@@ -31,6 +29,12 @@ const isActive = (href: string) =>
       </div>
       <a class="header-cta" href={url('/kontakt')}>Dołącz do nas <span aria-hidden="true">→</span></a>
     </nav>
+    <div class="header-controls">
+      <ThemeToggle />
+      <button class="nav-toggle" aria-label="Otwórz menu" aria-expanded="false" aria-controls="main-nav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </header>
 <style>
@@ -71,7 +75,7 @@ const isActive = (href: string) =>
     margin-top: 0.12rem;
   }
   .nav, .nav-links { display: flex; align-items: center; }
-  .nav { gap: clamp(1.5rem, 3vw, 2.5rem); }
+  .nav { gap: clamp(1.5rem, 3vw, 2.5rem); margin-left: auto; }
   .nav-links { gap: clamp(1.15rem, 2.5vw, 2rem); }
   .nav-links a {
     position: relative;
@@ -122,9 +126,16 @@ const isActive = (href: string) =>
     cursor: pointer;
   }
   .nav-toggle span { display: block; height: 2px; margin: 4px 0; background: var(--ink); }
+  .header-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: 0px;
+  }
   @media (max-width: 760px) {
     .header-inner { min-height: 4.5rem; flex-wrap: wrap; }
     .logo-mark { height: 2.05rem; }
+    .header-controls { gap: 0.4rem; margin-left: 0; order: 1;}
     .nav-toggle { display: block; }
     .nav {
       display: none;
@@ -134,6 +145,7 @@ const isActive = (href: string) =>
       flex-direction: column;
       align-items: stretch;
       gap: 1rem;
+      order: 2;
     }
     .nav.open { display: flex; }
     .nav-links { align-items: stretch; flex-direction: column; gap: 0; }

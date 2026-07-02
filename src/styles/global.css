@@ -20,11 +20,27 @@
   --step--1: 0.82rem;
   --step-0: 1rem;
   --step-1: clamp(1.15rem, 1.8vw, 1.35rem);
-  --step-2: clamp(1.65rem, 3vw, 2.15rem);
-  --step-3: clamp(2.25rem, 5vw, 3.55rem);
-  --step-4: clamp(3.15rem, 7vw, 5.8rem);
+  --step-2: clamp(1.65rem, 2.5vw, 2.15rem);
+  --step-3: clamp(2.25rem, 3.5vw, 3.55rem);
+  --step-4: clamp(3.15rem, 5vw, 5.8rem);
   --shadow-sm: 0 8px 24px rgba(13, 33, 59, 0.08);
   --shadow-lg: 0 24px 70px rgba(13, 33, 59, 0.13);
+}
+
+/* Dark theme variables */
+:root.dark {
+  --paper: #0d1721;
+  --paper-2: #14202e;
+  --surface: #1a2733;
+  --ink: #e8eef5;
+  --red: #c62828;
+  --red-dark: #9f1f1f;
+  --blue: #8bb4e4;
+  --blue-light: rgba(139, 180, 228, 0.32);
+  --line: #2a3a4a;
+  --muted: #8092a1;
+  --shadow-sm: 0 8px 24px rgba(0, 0, 0, 0.25);
+  --shadow-lg: 0 24px 70px rgba(0, 0, 0, 0.35);
 }
 
 * { box-sizing: border-box; }
@@ -35,9 +51,7 @@ body {
   font-family: var(--f-body);
   font-size: var(--step-0);
   color: var(--ink);
-  background:
-    radial-gradient(circle at 8% 6%, rgba(21, 59, 104, 0.06), transparent 25rem),
-    var(--paper);
+  background: var(--paper);
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
 }
@@ -155,7 +169,7 @@ a { color: var(--blue); text-underline-offset: 3px; }
   font-family: var(--f-display);
   font-weight: 800;
   line-height: 1;
-  background: #fff;
+  background: var(--surface);
 }
 
 section { margin: clamp(4rem, 8vw, 7rem) 0; }

@@ -1,0 +1,87 @@
+.dark .site-header {
+  background: rgba(13, 23, 33, 0.92);
+  border-bottom: 1px solid rgba(42, 58, 74, 0.9);
+  box-shadow: 0 5px 22px rgba(0, 0, 0, 0.25);
+}
+
+.dark .btn--ghost:hover { border-color: var(--line); }
+.dark .doc p, .dark .doc li { color: var(--muted); }
+
+/* Consolidated dark theme styles for components and pages */
+.dark .hero {
+  background: linear-gradient(180deg, rgba(229, 229, 229, 0.75), rgba(114, 131, 150, 0.4));
+  /* background: linear-gradient(180deg, rgba(26, 39, 51, .85), rgba(13, 23, 33, .4)); */
+}
+
+.dark .lede { color: var(--muted); }
+
+.dark .news-card {
+  background: rgba(26, 39, 51, 0.82);
+}
+.dark .news-card:hover { border-color: var(--line); }
+
+.dark .how-item {
+  background: rgba(26, 39, 51, 0.75);
+}
+.dark .how-item:hover { border-color: var(--line); }
+.dark .how-item:nth-child(2) .how-icon { background: rgba(255, 107, 107, 0.25); }
+.dark .how-number { color: var(--muted); }
+
+.dark .economy-section {
+  background: var(--surface);
+}
+.dark .economy-link { color: var(--blue); }
+.dark .economy-panel {
+  border: 1px solid var(--line);
+}
+.dark .economy-panel-head {
+  background: rgba(26, 39, 51, 0.82);
+}
+.dark .value-flow article {
+  background: rgba(26, 39, 51, 0.94);
+}
+.dark .value-flow article:nth-of-type(2) .value-icon { background: rgba(255, 107, 107, 0.25); }
+.dark .value-flow h3 { color: var(--line); }
+.dark .economy-principles {
+  background: var(--surface);
+}
+.dark .economy-principles b { color: #54ca89; }
+
+.dark .practice-card {
+  background: rgba(26, 39, 51, 0.75);
+}
+.dark .practice-card:nth-child(2) .practice-tag { background: rgba(255, 107, 107, 0.25); }
+
+.dark .manifest-band {
+  background: #152a42;
+}
+.dark .manifest-copy > p:not(.eyebrow) { color: var(--muted); }
+
+.dark .manifest-hero {
+  background:
+    radial-gradient(circle at 85% 20%, rgba(139, 180, 228, 0.06), transparent 25rem),
+    linear-gradient(135deg, var(--surface), var(--paper));
+}
+.dark .lead { color: var(--muted); }
+.dark .dna-section {
+  background: var(--surface);
+}
+.dark .dna-grid { border-top: 2px solid var(--muted); }
+.dark .values-grid article {
+  background: rgba(26, 39, 51, 0.8);
+}
+.dark .strategy-section { background: #152a42; }
+.dark .strategy-intro > p:last-child { color: var(--muted); }
+.dark .strategy-list { border-top: 1px solid var(--line); }
+.dark .strategy-list li {
+  border-bottom: 1px solid var(--line);
+}
+.dark .strategy-list li > span { color: var(--red); }
+.dark .strategy-list p { color: var(--muted); }
+.dark .commitment-copy .statement { color: var(--muted); }
+.dark .commitment-copy strong { background: var(--surface); }
+.dark .destination-action { background: var(--surface); }
+
+.dark .page-hero .lede { color: var(--muted); }
+
+.dark .nf p { color: var(--muted); }
