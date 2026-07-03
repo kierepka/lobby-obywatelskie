@@ -42,6 +42,7 @@
 }
 .dark .value-flow article:nth-of-type(2) .value-icon { background: rgba(255, 107, 107, 0.25); }
 .dark .value-flow h3 { color: var(--line); }
+.dark .values-grid h3 { color: var(--line); }
 .dark .economy-principles {
   background: var(--surface);
 }
@@ -82,6 +83,6 @@
 .dark .commitment-copy strong { background: var(--surface); }
 .dark .destination-action { background: var(--surface); }
 
-.dark .page-hero .lede { color: var(--muted); }
+.dark #main > header > p.lede { color: var(--muted); }
 
 .dark .nf p { color: var(--muted); }

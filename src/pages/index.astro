@@ -181,7 +181,7 @@ const steps = [
     </div>
     <div class="news-grid">
       {posts.map((p) => (
-        <NewsCard title={p.data.title} date={p.data.date} description={p.data.description} href={url(`/aktualnosci/${p.slug}`)} />
+        <NewsCard title={p.data.title} date={p.data.date} description={p.data.description} href={url(`/aktualnosci/${p.id}`)} />
       ))}
     </div>
   </section>
