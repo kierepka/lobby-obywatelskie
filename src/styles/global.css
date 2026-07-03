@@ -13,9 +13,9 @@
 
   --max: 74rem;
 
-  --f-display: "Archivo", system-ui, sans-serif;
-  --f-body: "Source Serif 4", Georgia, serif;
-  --f-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --f-display: system-ui, sans-serif;
+  --f-body: Georgia, serif;
+  --f-mono: ui-monospace, monospace;
 
   --step--1: 0.82rem;
   --step-0: 1rem;
