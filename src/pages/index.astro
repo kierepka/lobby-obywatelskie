@@ -1,5 +1,5 @@
 ---
-import { url } from '../lib/site';
+import { url, asset } from '../lib/site';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import NewsCard from '../components/NewsCard.astro';
@@ -13,19 +13,19 @@ const steps = [
   {
     number: '01',
     title: 'Proponujesz',
-    text: 'Każdy może wnieść pomysł. Trzy podpisy wystarczą, by rozpocząć obywatelską inicjatywę.',
-    icon: '✦',
+    text: 'Każdy może wnieść pomysł. Kilka podpisów wystarczy, by rozpocząć obywatelską inicjatywę.',
+    icon: '💡',
   },
   {
     number: '02',
     title: 'Dyskutujemy',
     text: 'Otwarta, rzeczowa debata daje przestrzeń na argumenty, zanim zapadnie wspólna decyzja.',
-    icon: '◎',
+    icon: '💬',
   },
   {
     number: '03',
     title: 'Decydujesz',
-    text: 'Tajne referendum i prosta zasada: jedna osoba to jeden, równie ważny głos.',
+    text: 'Tajne referendum, jedna osoba to jeden głos. Przegłosowana propozycja zwykłą większością głosów staje się naszym prawem.',
     icon: '✓',
   },
 ];
@@ -67,8 +67,8 @@ const steps = [
         <p class="eyebrow">Wspólnota, która tworzy wartość</p>
         <h2>Budujemy kapitał pracą własnych rąk i siłą naszych pomysłów.</h2>
         <p>
-          Demokracja nie kończy się na głosowaniu. Tworzymy wspólne inicjatywy
-          gospodarcze, w których członkowie łączą umiejętności, czas i zasoby,
+          Demokracja nie kończy się na głosowaniu. Tworzymy wspólne inicjatywy,
+          w których członkowie łączą umiejętności, czas i zasoby,
           aby rozwijać przedsięwzięcia budujące niezależność oraz dobrobyt grupy.
         </p>
         <a class="economy-link" href={url('/dolacz')}>
@@ -123,8 +123,7 @@ const steps = [
           <h2>Co nas spaja na co dzień.</h2>
         </div>
         <p>
-          Konkretne zasady, na których opieramy wspólne działanie — od rozwoju,
-          przez składkę, po to, kim jesteśmy.
+          Konkretne zasady, na których opieramy wspólne działanie.
         </p>
       </div>
       <div class="practice-grid">
@@ -137,10 +136,11 @@ const steps = [
           </p>
         </article>
         <article class="practice-card">
-          <span class="practice-tag">Składka</span>
+          <span class="practice-tag">Wzajemne więzi</span>
           <p>
-            Członkowie grupy zrzucają się po 12 zł rocznie.
-            O przeznaczeniu składki decydujemy wspólnie, w głosowaniach.
+            Tworzymy przestrzeń do wspólnych spotkań, rozmów i współpracy.
+            Poznajemy się, budujemy przyjaźnie, rozwijamy relacje oparte na
+            zaufaniu i wzajemnym szacunku oraz wzmacniamy poczucie wspólnoty.
           </p>
         </article>
         <article class="practice-card">
@@ -157,10 +157,8 @@ const steps = [
 
   <section class="manifest-band">
     <div class="container manifest-grid">
-      <div class="manifest-mark" aria-hidden="true">
-        <span>1</span>
-        <div><b>OSOBA</b><i></i><b>GŁOS</b></div>
-        <span>1</span>
+      <div class="manifest-mark">
+        <img src={asset('/img/logo-mark.png')} alt="" width="486" height="330" loading="lazy" />
       </div>
       <div class="manifest-copy">
         <p class="eyebrow">Nasze zobowiązanie</p>
@@ -195,13 +193,12 @@ const steps = [
   <section>
     <div class="container join">
       <div>
-        <p class="eyebrow">Spotkajmy się</p>
+        <p class="eyebrow">Odezwij się</p>
         <h2>Masz pomysł? Zacznijmy od rozmowy.</h2>
-        <p>Spotykamy się online w każdą środę. Wejście otwarte dla każdego.</p>
+        <p>Wejście otwarte dla każdego. Napisz — odpowiadamy.</p>
       </div>
       <div class="join-actions">
-        <a class="btn" href="https://rozmowy.wikikracja.pl/otwarte">Dołącz do spotkania</a>
-        <a class="btn btn--ghost" href={url('/kontakt')}>Napisz do nas</a>
+        <a class="btn" href={url('/kontakt')}>Kontakt</a>
       </div>
     </div>
   </section>
@@ -390,16 +387,11 @@ const steps = [
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 1rem;
       min-height: 18rem;
-      border: 1px solid rgba(255,255,255,.16);
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,255,255,.09), transparent 65%);
-      font: 700 clamp(4rem, 10vw, 8rem)/1 var(--f-display);
+      background: radial-gradient(circle, rgba(255,255,255,.10), transparent 68%);
     }
-    .manifest-mark > span:last-child { color: var(--red); }
-    .manifest-mark div { display: grid; justify-items: center; gap: .6rem; font-size: .68rem; letter-spacing: .14em; }
-    .manifest-mark i { width: 2.8rem; height: 3px; background: var(--red); transform: rotate(-12deg); }
+    .manifest-mark img { width: min(78%, 20rem); height: auto; display: block; }
     .manifest-copy .eyebrow { color: #fff; }
     .manifest-copy .eyebrow::before { background: var(--red); }
     .manifest-copy h2 { color: #fff; max-width: 13ch; }

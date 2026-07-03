@@ -1,0 +1,49 @@
+---
+import { url } from '../lib/site';
+interface Props { current: number; lastPage: number; }
+const { current, lastPage } = Astro.props;
+const hrefFor = (p: number) => (p <= 1 ? url('/aktualnosci') : url(`/aktualnosci/strona/${p}`));
+const hasPrev = current > 1;
+const hasNext = current < lastPage;
+---
+{lastPage > 1 && (
+  <nav class="pagination" aria-label="Paginacja aktualności">
+    {hasPrev
+      ? <a class="page-link" href={hrefFor(current - 1)} rel="prev">← Poprzednia</a>
+      : <span class="page-link is-disabled" aria-hidden="true">← Poprzednia</span>}
+    <span class="page-info">Strona {current} z {lastPage}</span>
+    {hasNext
+      ? <a class="page-link" href={hrefFor(current + 1)} rel="next">Następna →</a>
+      : <span class="page-link is-disabled" aria-hidden="true">Następna →</span>}
+  </nav>
+)}
+<style>
+  .pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  }
+  .page-link {
+    font: 700 .78rem var(--f-display);
+    letter-spacing: .03em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--blue);
+    padding: .6rem .9rem;
+    border: 1px solid var(--line);
+    border-radius: .5rem;
+    background: var(--surface);
+    transition: border-color .18s ease;
+  }
+  .page-link:hover { border-color: var(--muted); }
+  .page-link.is-disabled { color: var(--muted); opacity: .5; }
+  .page-info {
+    font: 700 .72rem var(--f-display);
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+</style>

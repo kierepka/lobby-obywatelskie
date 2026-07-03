@@ -1,0 +1,44 @@
+---
+import { url } from '../../../lib/site';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import NewsCard from '../../../components/NewsCard.astro';
+import Pagination from '../../../components/Pagination.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const PAGE_SIZE = 6;
+  const all = (await getCollection('aktualnosci', ({ data }) => !data.draft))
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  const lastPage = Math.max(1, Math.ceil(all.length / PAGE_SIZE));
+  const paths = [];
+  for (let p = 2; p <= lastPage; p++) {
+    paths.push({
+      params: { page: String(p) },
+      props: { current: p, lastPage, posts: all.slice((p - 1) * PAGE_SIZE, p * PAGE_SIZE) },
+    });
+  }
+  return paths;
+}
+
+const { current, lastPage, posts } = Astro.props;
+---
+<BaseLayout title={`Aktualności — strona ${current} — Lobby Obywatelskie`}>
+  <header class="page-hero container">
+    <p class="eyebrow">Aktualności</p>
+    <h1>Co się dzieje.</h1>
+  </header>
+  <section class="container news-list">
+    <div class="news-grid">
+      {posts.map((p) => (
+        <NewsCard title={p.data.title} date={p.data.date} description={p.data.description} href={url(`/aktualnosci/${p.id}`)} />
+      ))}
+    </div>
+    <Pagination current={current} lastPage={lastPage} />
+  </section>
+  <style>
+    .page-hero { padding: clamp(2.5rem, 6vw, 4rem) 1.5rem; border-bottom: 1px solid var(--line); margin-bottom: 0; }
+    .page-hero h1 { font-size: var(--step-3); margin: 0; }
+    .news-list { padding-top: clamp(2rem, 5vw, 3.5rem); }
+    .news-grid { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); }
+  </style>
+</BaseLayout>
