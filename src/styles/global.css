@@ -7,6 +7,7 @@
   --red-dark: #9f1f1f;
   --blue: #153b68;
   --blue-light: #e7eff8;
+  --accent-red-soft: #fce8ec;
   --line: #bccad6;
   --muted: #5e6b79;
   --magenta: #c62828;
@@ -37,6 +38,7 @@
   --red-dark: #9f1f1f;
   --blue: #8bb4e4;
   --blue-light: rgba(139, 180, 228, 0.32);
+  --accent-red-soft: rgba(255, 107, 107, 0.25);
   --line: #2a3a4a;
   --muted: #8092a1;
   --shadow-sm: 0 8px 24px rgba(0, 0, 0, 0.25);

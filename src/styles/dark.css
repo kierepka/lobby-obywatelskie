@@ -24,7 +24,6 @@
   background: rgba(26, 39, 51, 0.75);
 }
 .dark .how-item:hover { border-color: var(--line); }
-.dark .how-item:nth-child(2) .how-icon { background: rgba(255, 107, 107, 0.25); }
 .dark .how-number { color: var(--muted); }
 
 .dark .economy-section {
@@ -37,12 +36,6 @@
 .dark .economy-panel-head {
   background: rgba(26, 39, 51, 0.82);
 }
-.dark .value-flow article {
-  background: rgba(26, 39, 51, 0.94);
-}
-.dark .value-flow article:nth-of-type(2) .value-icon { background: rgba(255, 107, 107, 0.25); }
-.dark .value-flow h3 { color: var(--line); }
-.dark .values-grid h3 { color: var(--line); }
 .dark .economy-principles {
   background: var(--surface);
 }
@@ -51,7 +44,6 @@
 .dark .practice-card {
   background: rgba(26, 39, 51, 0.75);
 }
-.dark .practice-card:nth-child(2) .practice-tag { background: rgba(255, 107, 107, 0.25); }
 
 .dark .manifest-band {
   background: #152a42;
