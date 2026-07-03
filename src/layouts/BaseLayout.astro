@@ -2,8 +2,8 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { asset } from '../lib/site';
-import darkCssUrl from '../styles/dark.css?url';
 import '../styles/global.css';
+import '../styles/dark.css';
 interface Props { title: string; description?: string; }
 const { title, description = 'Lobby Obywatelskie — ruch demokracji bezpośredniej. Razem możemy więcej.' } = Astro.props;
 ---
@@ -17,11 +17,14 @@ const { title, description = 'Lobby Obywatelskie — ruch demokracji bezpośredn
     <meta name="theme-color" content="#000000" />
     <link rel="icon" href={asset('/img/logo-mark.png')} />
     <script is:inline>
-      // Set dark theme as default before CSS loads
+      // Set the theme class before first paint (no flash).
+      // Default: the saved choice, otherwise the OS preference.
       (function() {
-        const saved = localStorage.getItem('theme');
-        const isDark = saved ? saved === 'dark' : true;
-        if (isDark) document.documentElement.classList.add('dark');
+        var saved = localStorage.getItem('theme');
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (saved ? saved === 'dark' : prefersDark) {
+          document.documentElement.classList.add('dark');
+        }
       })();
     </script>
   </head>
@@ -32,16 +35,5 @@ const { title, description = 'Lobby Obywatelskie — ruch demokracji bezpośredn
       <slot />
     </main>
     <Footer />
-    <script is:inline define:vars={{ darkCssUrl }}>
-      // Lazy load dark.css only when dark theme is active
-      (function() {
-        if (document.documentElement.classList.contains('dark')) {
-          const link = document.createElement('link');
-          link.rel = 'stylesheet';
-          link.href = darkCssUrl;
-          document.head.appendChild(link);
-        }
-      })();
-    </script>
   </body>
 </html>

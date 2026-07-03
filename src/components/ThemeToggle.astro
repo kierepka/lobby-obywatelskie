@@ -34,29 +34,27 @@
 <script>
   const toggle = document.querySelector('.theme-toggle');
   const html = document.documentElement;
+  const mq = window.matchMedia('(prefers-color-scheme: dark)');
 
-  const setTheme = (isDark: boolean) => {
-    if (isDark) {
-      html.classList.add('dark');
-      toggle?.setAttribute('aria-pressed', 'true');
-    } else {
-      html.classList.remove('dark');
-      toggle?.setAttribute('aria-pressed', 'false');
-    }
+  const apply = (isDark: boolean) => {
+    html.classList.toggle('dark', isDark);
+    toggle?.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+  };
+
+  // Reflect the current theme on the button. The `.dark` class itself is set
+  // pre-render by the inline script in <head> (no flash).
+  const saved = localStorage.getItem('theme');
+  apply(saved ? saved === 'dark' : mq.matches);
+
+  // Explicit user choice — persist it.
+  toggle?.addEventListener('click', () => {
+    const isDark = !html.classList.contains('dark');
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
-  };
+    apply(isDark);
+  });
 
-  const toggleTheme = () => {
-    const isDark = html.classList.contains('dark');
-    setTheme(!isDark);
-  };
-
-  const initTheme = () => {
-    const saved = localStorage.getItem('theme');
-    const isDark = saved ? saved === 'dark' : true;
-    setTheme(isDark);
-  };
-
-  toggle?.addEventListener('click', toggleTheme);
-  initTheme();
+  // Follow the OS setting live, but only until the user picks a theme explicitly.
+  mq.addEventListener('change', (e) => {
+    if (!localStorage.getItem('theme')) apply(e.matches);
+  });
 </script>
