@@ -33,29 +33,31 @@ const steps = [
 ---
 <BaseLayout title="Lobby Obywatelskie — Razem możemy więcej">
   <Hero />
-
-  <section class="container intro-section">
-    <div class="section-heading">
-      <div>
-        <p class="eyebrow">Prosty mechanizm</p>
-        <h2>Demokracja, która naprawdę działa.</h2>
+  <section class="intro-section">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Prosty mechanizm</p>
+          <h2>Demokracja, która naprawdę działa.</h2>
+        </div>
+        <p>
+          Dajemy społeczności jasny proces przechodzenia od pomysłu do wspólnej,
+          wiążącej decyzji.
+        </p>
       </div>
-      <p>
-        Dajemy społeczności jasny proces przechodzenia od pomysłu do wspólnej,
-        wiążącej decyzji.
-      </p>
-    </div>
-    <div class="how">
-      {steps.map((step) => (
-        <article class="how-item">
-          <div class="how-top">
-            <span class="how-icon">{step.icon}</span>
-            <span class="how-number">{step.number}</span>
-          </div>
-          <h3>{step.title}</h3>
-          <p>{step.text}</p>
-        </article>
-      ))}
+      <div class="how">
+        {steps.map((step) => (
+          <article class="how-item">
+            <div class="how-top">
+              <span class="how-icon">{step.icon}</span>
+              <span class="how-number">{step.number}</span>
+            </div>
+            <h3>{step.title}</h3>
+            <p>{step.text}</p>
+          </article>
+        ))}
+      </div>
+
     </div>
   </section>
 
@@ -69,7 +71,7 @@ const steps = [
           gospodarcze, w których członkowie łączą umiejętności, czas i zasoby,
           aby rozwijać przedsięwzięcia budujące niezależność oraz dobrobyt grupy.
         </p>
-        <a class="economy-link" href={url('/kontakt')}>
+        <a class="economy-link" href={url('/dolacz')}>
           Dołącz do nas <span aria-hidden="true">→</span>
         </a>
       </div>
@@ -113,41 +115,43 @@ const steps = [
     </div>
   </section>
 
-  <section class="container practice-section">
-    <div class="section-heading">
-      <div>
-        <p class="eyebrow">Wspólnota w praktyce</p>
-        <h2>Co nas spaja na co dzień.</h2>
+  <section class="practice-section">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Wspólnota w praktyce</p>
+          <h2>Co nas spaja na co dzień.</h2>
+        </div>
+        <p>
+          Konkretne zasady, na których opieramy wspólne działanie — od rozwoju,
+          przez składkę, po to, kim jesteśmy.
+        </p>
       </div>
-      <p>
-        Konkretne zasady, na których opieramy wspólne działanie — od rozwoju,
-        przez składkę, po to, kim jesteśmy.
-      </p>
-    </div>
-    <div class="practice-grid">
-      <article class="practice-card">
-        <span class="practice-tag">Rozwój i współpraca</span>
-        <p>
-          Budujemy dobrobyt: intelektualny, zdrowotny i finansowy.
-          Wspieramy biznesy członków. Tworzymy wspólne przedsięwzięcia
-          i lokalne grupy.
-        </p>
-      </article>
-      <article class="practice-card">
-        <span class="practice-tag">Składka</span>
-        <p>
-          Członkowie grupy zrzucają się po 12 zł rocznie.
-          O przeznaczeniu składki decydujemy wspólnie, w głosowaniach.
-        </p>
-      </article>
-      <article class="practice-card">
-        <span class="practice-tag">Dlaczego „Lobby Obywatelskie”</span>
-        <p>
-          Nasza grupa nazywa się Lobby Obywatelskie, ponieważ działamy
-          z pozycji obywateli i na rzecz obywateli. Działamy oddolnie
-          i zachowujemy neutralność polityczną.
-        </p>
-      </article>
+      <div class="practice-grid">
+        <article class="practice-card">
+          <span class="practice-tag">Rozwój i współpraca</span>
+          <p>
+            Budujemy dobrobyt: intelektualny, zdrowotny i finansowy.
+            Wspieramy biznesy członków. Tworzymy wspólne przedsięwzięcia
+            i lokalne grupy.
+          </p>
+        </article>
+        <article class="practice-card">
+          <span class="practice-tag">Składka</span>
+          <p>
+            Członkowie grupy zrzucają się po 12 zł rocznie.
+            O przeznaczeniu składki decydujemy wspólnie, w głosowaniach.
+          </p>
+        </article>
+        <article class="practice-card">
+          <span class="practice-tag">Dlaczego „Lobby Obywatelskie”</span>
+          <p>
+            Nasza grupa nazywa się Lobby Obywatelskie, ponieważ działamy
+            z pozycji obywateli i na rzecz obywateli. Działamy oddolnie
+            i zachowujemy neutralność polityczną.
+          </p>
+        </article>
+      </div>
     </div>
   </section>
 
@@ -171,30 +175,34 @@ const steps = [
     </div>
   </section>
 
-  <section class="container news-section">
-    <div class="news-head">
-      <div>
-        <p class="eyebrow">Aktualności</p>
-        <h2>Jesteśmy w ruchu.</h2>
+  <section class="news-section">
+    <div class="container">
+      <div class="news-head">
+        <div>
+          <p class="eyebrow">Aktualności</p>
+          <h2>Jesteśmy w ruchu.</h2>
+        </div>
+        <a class="news-all" href={url('/aktualnosci')}>Wszystkie aktualności <span>→</span></a>
       </div>
-      <a class="news-all" href={url('/aktualnosci')}>Wszystkie aktualności <span>→</span></a>
-    </div>
-    <div class="news-grid">
-      {posts.map((p) => (
-        <NewsCard title={p.data.title} date={p.data.date} description={p.data.description} href={url(`/aktualnosci/${p.id}`)} />
-      ))}
+      <div class="news-grid">
+        {posts.map((p) => (
+          <NewsCard title={p.data.title} date={p.data.date} description={p.data.description} href={url(`/aktualnosci/${p.id}`)} />
+        ))}
+      </div>
     </div>
   </section>
 
-  <section class="container join">
-    <div>
-      <p class="eyebrow">Spotkajmy się</p>
-      <h2>Masz pomysł? Zacznijmy od rozmowy.</h2>
-      <p>Spotykamy się online w każdą środę o 21:00. Wejście otwarte dla każdego.</p>
-    </div>
-    <div class="join-actions">
-      <a class="btn" href="https://rozmowy.wikikracja.pl/otwarte" target="_blank" rel="noopener noreferrer">Dołącz do spotkania</a>
-      <a class="btn btn--ghost" href={url('/kontakt')}>Napisz do nas</a>
+  <section>
+    <div class="container join">
+      <div>
+        <p class="eyebrow">Spotkajmy się</p>
+        <h2>Masz pomysł? Zacznijmy od rozmowy.</h2>
+        <p>Spotykamy się online w każdą środę. Wejście otwarte dla każdego.</p>
+      </div>
+      <div class="join-actions">
+        <a class="btn" href="https://rozmowy.wikikracja.pl/otwarte">Dołącz do spotkania</a>
+        <a class="btn btn--ghost" href={url('/kontakt')}>Napisz do nas</a>
+      </div>
     </div>
   </section>
 
