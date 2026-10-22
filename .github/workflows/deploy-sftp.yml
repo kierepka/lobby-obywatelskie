@@ -47,6 +47,6 @@ jobs:
           lftp --env-password -u "$SFTP_USERNAME" "sftp://$SFTP_SERVER:44999" <<'EOF'
           set sftp:auto-confirm no
           set net:timeout 30
-          mirror --reverse --verbose dist/ /home/lobbyobywatelskie/htdocs/lobbyobywatelskie.pl/
+          mirror --reverse --verbose dist/ /home/lobby/htdocs/lobbyobywatelskie.pl/
           bye
           EOF
