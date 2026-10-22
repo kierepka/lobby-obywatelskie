@@ -37,6 +37,7 @@ jobs:
           SFTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
           SFTP_KNOWN_HOSTS: ${{ secrets.SFTP_KNOWN_HOSTS }}
         run: |
+          echo "Installing lftp..."
           sudo apt-get update
           sudo apt-get install --yes lftp
           test -n "$SFTP_KNOWN_HOSTS" || { echo "SFTP_KNOWN_HOSTS is required"; exit 1; }
@@ -44,9 +45,17 @@ jobs:
           printf '%s\n' "$SFTP_KNOWN_HOSTS" > ~/.ssh/known_hosts
           chmod 600 ~/.ssh/known_hosts
           export LFTP_PASSWORD="$SFTP_PASSWORD"
-          lftp --env-password -u "$SFTP_USERNAME" "sftp://$SFTP_SERVER:44999" <<'EOF'
+          echo "Connecting to SFTP on port 44999..."
+          timeout 120s lftp --env-password -u "$SFTP_USERNAME" "sftp://$SFTP_SERVER:44999" <<'EOF'
+          set cmd:fail-exit yes
           set sftp:auto-confirm no
-          set net:timeout 30
+          set net:timeout 20
+          set net:max-retries 1
+          set net:reconnect-interval-base 2
+          set net:reconnect-interval-max 5
+          echo "Checking SFTP connection..."
+          pwd
+          echo "Uploading dist/..."
           mirror --reverse --verbose dist/ /home/lobby/htdocs/lobbyobywatelskie.pl/
           bye
           EOF
